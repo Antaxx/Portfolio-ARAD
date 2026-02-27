@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAD - Visions Artistiques</title>
+    <meta name="description" content="Portfolio Neobrutaliste - Explorez un univers où l'ombre rencontre la lumière.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Outfit:wght@400;700;900&family=Space+Grotesk:wght@300;400;700&family=Syne:wght@800&family=Unbounded:wght@900&display=swap"
+        rel="stylesheet">
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.61/build/spline-viewer.js"></script>
+    <!-- Scripts -->
+
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepblack: '#121212',
+                        sunset: '#E0E0E0',
+                        sunsetlight: '#F5F5F5',
+                        sunsetyellow: '#FFFFFF',
+                        cyansun: '#C0C0C0',
+                        brain: '#FFFFFF',
+                        accent: 'var(--accent-color)'
+                    },
+                    fontFamily: {
+                        roca: ['"Roca One"', 'serif', 'sans-serif'],
+                        outfit: ['"Outfit"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'neo': '8px 8px 0px 0px #FFFFFF',
+                        'neo-hover': '12px 12px 0px 0px #FFFFFF',
+                        'neo-nav': '4px 4px 0px 0px #C0C0C0',
+                        'neo-card': '8px 8px 0px 0px #C0C0C0',
+                        'neo-brain': '8px 8px 0px 0px #FFFFFF'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-deepblack text-white font-roca overflow-x-hidden selection:bg-cyansun selection:text-white pb-20 relative z-0">
+
+    <!-- Custom Circadian Cursor -->
+    <div id="custom-cursor"
+        class="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 opacity-0">
+        <div id="cursor-core"
+            class="relative w-8 h-8 rounded-full border-2 border-white/50 bg-sunset flex items-center justify-center transition-all duration-500 shadow-2xl">
+            <span id="cursor-text"
+                class="text-[10px] font-bold text-deepblack opacity-0 transition-opacity duration-300 whitespace-nowrap"></span>
+        </div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="fixed inset-0 z-[9998] opacity-[0.04] pointer-events-none noise-bg"></div>
+
+    <!-- Immersive Circadian Background -->
+    <div class="fixed inset-0 z-[-1] bg-black pointer-events-none overflow-hidden" id="circadian-bg">
+        <!-- Neural Background Canvas -->
+        <canvas id="neural-canvas" class="absolute inset-0 z-10 opacity-40 pointer-events-none"></canvas>
+    </div>
+
+    <!-- Navbar Flottante -->
+    <nav
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-deepblack/30 backdrop-blur-xl border-[3px] border-white shadow-[0_0_20px_rgba(0,212,255,0.2)] px-8 py-4 flex items-center gap-8 rounded-full transition-transform hover:translate-y-[-2px] hover:shadow-[0_0_40px_rgba(0,212,255,0.5)] transition-all duration-300">
+
+        <!-- ARAD Logo -->
+        <a href="#hero" id="arad-logo" class="flex items-center group">
+            <span class="text-sm font-black tracking-widest text-cyansun group-hover:text-white transition-colors"
+                style="font-family: 'Unbounded', sans-serif;">ARAD</span>
+        </a>
+
+        <div
+            class="flex flex-nowrap gap-x-1.5 items-center text-[8px] uppercase font-black tracking-[0.08em] justify-center whitespace-nowrap">
+
+            <a href="#solution"
+                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Solution</a>
+            <a href="#stats"
+                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Chiffres</a>
+            <a href="#projets"
+                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Démos</a>
+            <a href="#pourquoi"
+                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Pourquoi</a>
+            <a href="#equipe"
+                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Équipe</a>
+            <a href="#temoignages"
+                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Avis</a>
+            <a href="#histoire"
+                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Histoire</a>
+
+        </div>
+
+
+        <a href="#contact"
+            class="bg-white text-deepblack px-6 py-2.5 rounded-full font-black uppercase hover:bg-transparent hover:text-white border-2 border-cyansun transition-all shadow-[0_0_15px_rgba(0,212,255,0.4)] overflow-hidden relative group btn-3d-nav">
+            <span class="relative z-10 text-[10px] text-center w-full">COMMENCER</span>
+        </a>
+    </nav>
+
+
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero"
+            class="relative min-h-screen flex flex-col justify-center items-center px-4 pt-20 overflow-hidden">
+            <spline-viewer url="https://prod.spline.design/oAUYtkB7Mm6PhhiL/scene.splinecode"></spline-viewer>
+
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 gap-4 mt-[6vh]">
+                <!-- Badge -->
+                <div
+                    class="px-5 py-2 rounded-full border border-cyansun/50 bg-white/5 backdrop-blur-md text-cyansun font-bold uppercase tracking-[0.2em] text-xs shadow-[0_0_15px_rgba(0,212,255,0.2)] reveal-up">
+                    automatisations IA pour hôtels et restaurants
+                </div>
+                <h1 id="main-arad-title"
+                    class="text-[16vw] font-black uppercase tracking-tighter m-0 opacity-100 pointer-events-none select-none transition-all duration-1000 leading-none whitespace-nowrap text-center main-title-arad">
+                    ARAD
+                </h1>
+            </div>
+
+            <!-- Subtext & Button — below Saturn's rings -->
+            <div class="absolute inset-x-0 z-10 text-center px-4" style="bottom: 12%;">
+                <div class="text-center mb-8">
+                    <p
+                        class="hero-text inline-block text-white font-black uppercase tracking-[0.1em] text-[3.5vw] md:text-2xl whitespace-nowrap">
+                        L'IA au sein de votre entreprise
+                    </p>
+                </div>
+                <div class="flex justify-center gap-6 reveal-up">
+                    <a href="#solution"
+                        class="bg-white text-deepblack px-8 py-4 text-xl font-black border-4 border-white btn-neo-premium transition-all duration-300 magnetic inline-block rounded-full uppercase tracking-widest whitespace-nowrap">Faites
+                        passer votre entreprise au niveau supérieur</a>
+                </div>
+            </div>
+
+            <!-- Smooth gradient transition to next section -->
+            <div
+                class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-deepblack pointer-events-none z-20">
+            </div>
+
+        </section>
+
+
+
+        <!-- Pillar 3: Nos créations -->
+        <section id="solution" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-white/5">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">NOS CRÉATIONS</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Agent 1: Assistant Vocal -->
+                <article
+                    class="group relative bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[2.5rem] overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-64 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                            <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=800"
+                                alt="Assistant Vocal"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <h3 class="text-4xl font-black mb-4 uppercase">Assistant Vocal</h3>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            Interactions naturelles et fluides. Donnez une voix à votre marque avec nos agents
+                            conversationnels de pointe.
+                        </p>
+                        <button
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase rounded-full hover:bg-white hover:text-deepblack transition-all magnetic">
+                            Tester le Vocal
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Agent 2: Agent FAQ -->
+                <article
+                    class="group relative bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[2.5rem] overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-64 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                            <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd05a?q=80&w=800"
+                                alt="Agent FAQ"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <h3 class="text-4xl font-black mb-4 uppercase">Agent FAQ</h3>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            Support client 24/7. Résolvez les questions complexes instantanément grâce à notre IA
+                            entrainée sur vos données.
+                        </p>
+                        <button
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase rounded-full hover:bg-white hover:text-deepblack transition-all magnetic">
+                            Consulter la FAQ
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Agent 3: IA Réservation Hôtel -->
+                <article
+                    class="group relative bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[2.5rem] overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-64 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800"
+                                alt="Agent Réservation Hôtel"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <h3 class="text-4xl font-black mb-4 uppercase">Réservation d'Hôtels</h3>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            Automatisez la gestion de vos agendas, répondez aux questions des clients et maximisez votre
+                            taux de remplissage 24h/24.
+                        </p>
+                        <button
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase rounded-full hover:bg-white hover:text-deepblack transition-all magnetic">
+                            Voir la démo
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Agent 4: IA Avis Google -->
+                <article
+                    class="group relative bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[2.5rem] overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-64 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=800"
+                                alt="Agent Avis Google"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <h3 class="text-4xl font-black mb-4 uppercase">Réponse aux Avis</h3>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            Une IA dédiée pour répondre automatiquement et de manière hyper-personnalisée à vos avis
+                            Google. Optimisez votre e-réputation sans effort.
+                        </p>
+                        <button
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase rounded-full hover:bg-white hover:text-deepblack transition-all magnetic">
+                            Gérer les avis
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Pillar 4: Les chiffres -->
+        <section id="stats" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-white/5">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">LES CHIFFRES</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group bg-white/5 border-2 border-white/10 p-10 rounded-[3rem] text-center reveal-card">
+                    <div class="text-7xl font-black text-white mb-2 counter" data-target="100">+0h</div>
+                    <p class="text-gray-400 font-bold uppercase tracking-widest">Gagnées / mois</p>
+                </div>
+                <div class="group bg-white/5 border-2 border-white/10 p-10 rounded-[3rem] text-center reveal-card">
+                    <div class="text-7xl font-black text-white mb-2 counter" data-target="100">0%</div>
+                    <p class="text-gray-400 font-bold uppercase tracking-widest">Satisfactions Clients</p>
+                </div>
+                <div class="group bg-white/5 border-2 border-white/10 p-10 rounded-[3rem] text-center reveal-card">
+                    <div class="text-7xl font-black text-white mb-2 counter" data-target="12">0</div>
+                    <p class="text-gray-400 font-bold uppercase tracking-widest">Partenaires</p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <!-- Pillar 5: Exemples / Démos (Repurposed Projets) -->
+        <section id="projets" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-white/5">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">DÉMOS & PROJETS</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-16">
+                <!-- Project 1 -->
+                <article
+                    class="group relative bg-[#1a1a1a] border-4 border-deeppurple p-6 shadow-neo hover:shadow-neo-hover hover:-translate-y-2 transition-all duration-300 reveal-card rounded-3xl">
+                    <div class="overflow-hidden mb-6 border-2 border-gray-800 rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
+                            alt="Projet 1"
+                            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700 blur-[2px] hover:blur-none grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-cyansun text-sm font-bold tracking-widest uppercase mb-2 block">Direction
+                                Artistique</span>
+                            <h3 class="text-3xl font-bold mb-2">L'Ombre Douce</h3>
+                        </div>
+                        <a href="#"
+                            class="bg-white text-deepblack w-12 h-12 flex items-center justify-center rounded-full hover:bg-sunset transition-colors hover:rotate-45">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article
+                    class="group relative bg-[#1a1a1a] border-4 border-deeppurple p-6 shadow-neo hover:shadow-neo-hover hover:-translate-y-2 transition-all duration-300 md:translate-y-16 reveal-card rounded-3xl">
+                    <div class="overflow-hidden mb-6 border-2 border-gray-800 rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1604871000636-074fa5117945?w=800&q=80"
+                            alt="Projet 2"
+                            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700 blur-[2px] hover:blur-none grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span
+                                class="text-cyansun text-sm font-bold tracking-widest uppercase mb-2 block">Photographie</span>
+                            <h3 class="text-3xl font-bold mb-2">Neon Nights</h3>
+                        </div>
+                        <a href="#"
+                            class="bg-white text-deepblack w-12 h-12 flex items-center justify-center rounded-full hover:bg-sunset transition-colors hover:rotate-45">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article
+                    class="group relative bg-[#1a1a1a] border-4 border-deeppurple p-6 shadow-neo hover:shadow-neo-hover hover:-translate-y-2 transition-all duration-300 reveal-card rounded-3xl">
+                    <div class="overflow-hidden mb-6 border-2 border-gray-800 rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&q=80" alt="Projet 3"
+                            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700 blur-[2px] hover:blur-none grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-cyansun text-sm font-bold tracking-widest uppercase mb-2 block">Identité
+                                Visuelle</span>
+                            <h3 class="text-3xl font-bold mb-2">Écho Urbain</h3>
+                        </div>
+                        <a href="#"
+                            class="bg-white text-deepblack w-12 h-12 flex items-center justify-center rounded-full hover:bg-sunset transition-colors hover:rotate-45">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article
+                    class="group relative bg-deepblack border-4 border-white p-6 shadow-[8px_8px_0_rgba(255,255,255,0.2)] hover:shadow-[12px_12px_0_rgba(255,255,255,0.4)] hover:-translate-y-2 transition-all duration-300 md:translate-y-16 reveal-card text-white rounded-3xl">
+                    <div class="flex flex-col justify-center h-full items-center text-center py-20">
+                        <h3 class="text-4xl font-black uppercase mb-4">Voir Plus</h3>
+                        <p class="font-bold text-xl mb-8 text-gray-300">Découvrez les archives complètes</p>
+                        <a href="archives.html"
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase hover:bg-transparent hover:text-white border-2 border-white transition-colors rounded-full">
+                            Accéder aux archives
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+        <!-- Process Section -->
+        <section id="process" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-deeppurple">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">PROCESSUS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 process-grid">
+                <!-- Step 01 -->
+                <div
+                    class="relative p-8 bg-deepblack border-2 border-white/10 rounded-[2.5rem] reveal-card group transition-all duration-500 process-card cursor-pointer">
+                    <span
+                        class="absolute -top-10 -left-4 text-9xl font-black opacity-10 text-white transition-all group-hover:opacity-40 outline-text"
+                        style="-webkit-text-stroke: 2px white; color: transparent;">01</span>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-black text-white uppercase mb-4">Audit</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed">
+                            Nous analysons vos flux de travail actuels pour identifier les goulots d'étranglement et
+                            les
+                            opportunités d'automatisation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 02 -->
+                <div
+                    class="relative p-8 bg-deepblack border-2 border-white/10 rounded-[2.5rem] reveal-card group transition-all duration-500 process-card cursor-pointer">
+                    <span
+                        class="absolute -top-10 -left-4 text-9xl font-black opacity-10 text-white transition-all group-hover:opacity-40 outline-text"
+                        style="-webkit-text-stroke: 2px white; color: transparent;">02</span>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-black text-white uppercase mb-4">Développement</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed">
+                            Nos experts conçoivent et construisent des agents IA personnalisés qui s'intègrent
+                            parfaitement à votre écosystème.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 03 -->
+                <div
+                    class="relative p-8 bg-deepblack border-2 border-white/10 rounded-[2.5rem] reveal-card group transition-all duration-500 process-card cursor-pointer">
+                    <span
+                        class="absolute -top-10 -left-4 text-9xl font-black opacity-10 text-white transition-all group-hover:opacity-40 outline-text"
+                        style="-webkit-text-stroke: 2px white; color: transparent;">03</span>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-black text-white uppercase mb-4">Déploiement</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed">
+                            Nous déployons vos solutions et assurons un suivi continu pour optimiser les
+                            performances de
+                            vos automatisations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Marquee (Moved under Processus) -->
+        <!-- Outils Section -->
+        <section id="outils" class="tech-carousel-section mb-20 border-t-4 border-deeppurple">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">NOS OUTILS</h2>
+            <div class="tech-layout-container">
+                <!-- Carousel Side -->
+                <div class="tech-carousel-container">
+                    <div class="tech-track">
+                        <div class="tech-card" title="n8n"
+                            data-description="Puissant outil d'automatisation des flux de travail. Il nous permet de connecter n'importe quelle API avec n'importe quelle autre.">
+                            <img src="https://cdn.simpleicons.org/n8n/FF6C37" alt="n8n">
+                            <span>n8n</span>
+                        </div>
+                        <!-- Gemini -->
+                        <div class="tech-card" title="Google Gemini"
+                            data-description="Notre IA de référence pour l'analyse multimodale complexe et la génération de contenu textuel et visuel ultra-rapide.">
+                            <img src="https://cdn.simpleicons.org/googlegemini/4D90FE" alt="Gemini">
+                            <span>Gemini</span>
+                        </div>
+                        <!-- Claude -->
+                        <div class="tech-card" title="Anthropic Claude"
+                            data-description="L'intelligence artificielle parfaite pour l'analyse profonde, le traitement de longs documents et la nuance contextuelle.">
+                            <img src="https://cdn.simpleicons.org/anthropic/D97757" alt="Claude">
+                            <span>Claude</span>
+                        </div>
+                        <!-- Notion -->
+                        <div class="tech-card" title="Notion"
+                            data-description="Le cerveau de notre agence. Toute la gestion de projet, documentation et bases de données centralisées au même endroit.">
+                            <img src="data:image/svg+xml,%3Csvg fill='%23ffffff' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3ENotion%3C/title%3E%3Cpath d='M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L18.56 2.47c-.42-.326-.98-.7-2.055-.607L3.601 2.788c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.84-.046.933-.56.933-1.167V6.354c0-.606-.233-.933-.746-.886l-15.177.887c-.56.046-.747.326-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.933-.234-1.495-.933l-4.577-7.186v6.952l1.448.327s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.886.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.933.653.933 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.046-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.448-1.632z'/%3E%3C/svg%3E"
+                                alt="Notion">
+                            <span>Notion</span>
+                        </div>
+                        <!-- Make -->
+                        <div class="tech-card" title="Make"
+                            data-description="Plateforme visuelle d'automatisation. Idéale pour créer et gérer des intégrations complexes sans écrire une seule ligne de code.">
+                            <img src="https://cdn.simpleicons.org/make/6A4DFF" alt="Make">
+                            <span>Make</span>
+                        </div>
+                        <!-- OpenAI -->
+                        <div class="tech-card" title="OpenAI"
+                            data-description="La technologie sous-jacente habilitant nos solutions les plus conversationnelles. Expertise en génération de langage naturel.">
+                            <img src="data:image/svg+xml,%3Csvg fill='%23ffffff' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EOpenAI%3C/title%3E%3Cpath d='M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z'/%3E%3C/svg%3E"
+                                alt="OpenAI">
+                            <span>OpenAI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description Panel Side -->
+                <div class="tech-info-panel">
+                    <h3 id="tech-info-title" class="text-4xl font-black text-white uppercase mb-4 tracking-wider">
+                        Sélectionnez un outil</h3>
+                    <p id="tech-info-desc" class="text-gray-400 text-xl leading-relaxed">
+                        Explorez notre suite logicielle en survolant ou cliquant sur les icônes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Agents Showcase Section -->
+
+        <!-- Pourquoi nous Section -->
+        <section id="pourquoi" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-white/5">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">POURQUOI NOUS ?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Pillar 1: Approche IA concrète -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[2.5rem] flex flex-col items-center text-center">
+                    <div class="mb-8 p-6 bg-white/5 rounded-3xl border-2 border-white/10">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase mb-4 text-white">Approche IA Concrète</h3>
+                    <p class="text-gray-400 font-medium">Pas de blabla théorique. Nous implémentons des solutions qui
+                        résolvent vos problèmes réels dès le premier jour.</p>
+                </div>
+
+                <!-- Pillar 2: Rapidité d’exécution -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[2.5rem] flex flex-col items-center text-center md:translate-y-8">
+                    <div class="mb-8 p-6 bg-white/5 rounded-3xl border-2 border-white/10">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase mb-4 text-white">Rapidité d'Exécution</h3>
+                    <p class="text-gray-400 font-medium">Le temps est votre ressource la plus précieuse. Nos cycles de
+                        développement sont optimisés pour des résultats éclairs.</p>
+                </div>
+
+                <!-- Pillar 3: Personnalisation -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[2.5rem] flex flex-col items-center text-center lg:translate-y-16">
+                    <div class="mb-8 p-6 bg-white/5 rounded-3xl border-2 border-white/10">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase mb-4 text-white">Personnalisation</h3>
+                    <p class="text-gray-400 font-medium">Votre entreprise est unique. Nos agents sont taillés sur mesure
+                        pour s'intégrer parfaitement à votre workflow actuel.</p>
+                </div>
+
+                <!-- Pillar 4: Vision long terme -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[2.5rem] flex flex-col items-center text-center md:translate-y-8 lg:translate-y-24">
+                    <div class="mb-8 p-6 bg-white/5 rounded-3xl border-2 border-white/10">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase mb-4 text-white">Vision Long Terme</h3>
+                    <p class="text-gray-400 font-medium">Nous ne sommes pas là pour un one-shot. Nous vous accompagnons
+                        dans l'évolution constante de votre stack technologique.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Études de Cas Section -->
+        <section id="etudes" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-white/5">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">ÉTUDES DE CAS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Case Study 1: Hôtel -->
+                <div
+                    class="group bg-[#1a1a1a]/60 backdrop-blur-xl border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[3rem] flex flex-col h-full">
+                    <div class="mb-8 flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/10">
+                            <span class="text-white font-black">01</span>
+                        </div>
+                        <h3 class="text-2xl font-black uppercase text-white leading-none">Hôtellerie<br>Automatisée</h3>
+                    </div>
+
+                    <div class="space-y-6 flex-grow">
+                        <div>
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gray-500 block mb-2">Problème</span>
+                            <p class="text-gray-300">Un hôtel reçoit plus de 30 appels par jour pour des questions
+                                répétitives (horaires, parking, Wi-Fi).</p>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-cyansun block mb-2">Solution
+                                ARAD</span>
+                            <p class="text-white font-medium">Déploiement d'un agent IA vocal et textuel multilingue
+                                disponible 24/7.</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent block mb-2">Résultat</span>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-5xl font-black text-white">-60%</span>
+                                <span class="text-gray-400 font-bold uppercase text-xs">d'appels entrants</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: E-commerce -->
+                <div
+                    class="group bg-[#1a1a1a]/60 backdrop-blur-xl border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[3rem] flex flex-col h-full md:translate-y-12">
+                    <div class="mb-8 flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/10">
+                            <span class="text-white font-black">02</span>
+                        </div>
+                        <h3 class="text-2xl font-black uppercase text-white leading-none">Support<br>E-commerce</h3>
+                    </div>
+
+                    <div class="space-y-6 flex-grow">
+                        <div>
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gray-500 block mb-2">Problème</span>
+                            <p class="text-gray-300">Temps de réponse moyen de 18h pendant le week-end, entraînant une
+                                perte de confiance client.</p>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-cyansun block mb-2">Solution
+                                ARAD</span>
+                            <p class="text-white font-medium">Bot FAQ intelligent synchronisé en temps réel avec le
+                                stock et les CGV.</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent block mb-2">Résultat</span>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-5xl font-black text-white">85%</span>
+                                <span class="text-gray-400 font-bold uppercase text-xs">de résolution instantanée</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: Sales -->
+                <div
+                    class="group bg-[#1a1a1a]/60 backdrop-blur-xl border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[3rem] flex flex-col h-full lg:translate-y-24">
+                    <div class="mb-8 flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/10">
+                            <span class="text-white font-black">03</span>
+                        </div>
+                        <h3 class="text-2xl font-black uppercase text-white leading-none">Qualification<br>de Leads</h3>
+                    </div>
+
+                    <div class="space-y-6 flex-grow">
+                        <div>
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gray-500 block mb-2">Problème</span>
+                            <p class="text-gray-300">60% du temps des commerciaux est gâché à trier des prospects
+                                non-qualifiés.</p>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-cyansun block mb-2">Solution
+                                ARAD</span>
+                            <p class="text-white font-medium">Système de scoring automatique via IA analysant le profil
+                                et les besoins.</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent block mb-2">Résultat</span>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-5xl font-black text-white">+40%</span>
+                                <span class="text-gray-400 font-bold uppercase text-xs">de conversion RDV</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="equipe" class="py-24 px-6 md:px-12 max-w-7xl mx-auto mt-20">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">L'ÉQUIPE</h2>
+
+
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Member 1 -->
+                <div
+                    class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-white/40 hover:-translate-y-2 transition-all duration-500 reveal-card text-center group rounded-[2.5rem] relative overflow-hidden flex flex-col items-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="h-32 w-32 mx-auto bg-deepblack rounded-full mb-6 border-4 border-white/10 overflow-hidden relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-gray-500 to-deepblack opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-6xl font-black text-white mix-blend-overlay">A</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase mb-2">Antonin<br>Dubrulle</h3>
+                        <span
+                            class="text-white font-bold uppercase tracking-widest text-sm bg-white/10 border border-white/10 px-4 py-1.5 inline-block mt-2 rounded-full shadow-sm">Lycéen</span>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div
+                    class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-white/40 hover:-translate-y-2 transition-all duration-500 reveal-card text-center group md:translate-y-8 rounded-[2.5rem] relative overflow-hidden flex flex-col items-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <div class="relative z-10 w-full">
+                        <div
+                            class="h-32 w-32 mx-auto bg-white rounded-full mb-6 border-4 border-white/10 overflow-hidden relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-gray-300 to-white opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-6xl font-black text-deepblack mix-blend-overlay">E</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase mb-2">Eliott<br>Perier</h3>
+                        <span
+                            class="text-white font-bold uppercase tracking-widest text-sm bg-white/10 border border-white/10 px-4 py-1.5 inline-block mt-2 rounded-full shadow-sm">Lycéen</span>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div
+                    class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-white/40 hover:-translate-y-2 transition-all duration-500 reveal-card text-center group rounded-[2.5rem] relative overflow-hidden flex flex-col items-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="h-32 w-32 mx-auto bg-deepblack rounded-full mb-6 border-4 border-white/10 overflow-hidden relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-gray-500 to-deepblack opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-6xl font-black text-white mix-blend-overlay">E</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase mb-2">Eliott<br>Dubrulle</h3>
+                        <span
+                            class="text-white font-bold uppercase tracking-widest text-sm bg-white/10 border border-white/10 px-4 py-1.5 inline-block mt-2 rounded-full shadow-sm">Lycéen</span>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div
+                    class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-white/40 hover:-translate-y-2 transition-all duration-500 reveal-card text-center group md:translate-y-8 rounded-[2.5rem] relative overflow-hidden flex flex-col items-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <div class="relative z-10 w-full">
+                        <div
+                            class="h-32 w-32 mx-auto bg-white rounded-full mb-6 border-4 border-white/10 overflow-hidden relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-gray-300 to-white opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-6xl font-black text-deepblack mix-blend-overlay">M</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase mb-2">Mathys<br>Mien</h3>
+                        <span
+                            class="text-white font-bold uppercase tracking-widest text-sm bg-white/10 border border-white/10 px-4 py-1.5 inline-block mt-2 rounded-full shadow-sm">Lycéen</span>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+        <!-- Pillar 10: Témoignages Section -->
+        <section id="temoignages" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-white/5 reveal-up">
+            <h2 class="text-6xl md:text-8xl font-black mb-16 uppercase text-center section-title">TÉMOIGNAGES</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div
+                    class="p-12 bg-white/5 border-2 border-white/10 rounded-[3rem] relative overflow-hidden group hover:border-white/30 transition-all duration-500">
+                    <span
+                        class="text-[15rem] font-black absolute -top-16 -left-10 opacity-[0.03] pointer-events-none group-hover:opacity-10 transition-opacity">"</span>
+                    <p class="text-2xl md:text-3xl font-bold text-white mb-10 relative z-10 leading-snug">
+                        "L'implémentation de l'agent vocal ARAD a radicalement changé notre gestion client. Nous gagnons
+                        15h par semaine de pur travail administratif."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white/10 rounded-full border border-white/20"></div>
+                        <div>
+                            <p class="font-black uppercase text-lg text-white">Marc Lefebvre</p>
+                            <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">Directeur Opérations •
+                                Hôtel Lux</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="p-12 bg-white/5 border-2 border-white/10 rounded-[3rem] relative overflow-hidden group hover:border-white/30 transition-all duration-500 md:translate-y-12">
+                    <span
+                        class="text-[15rem] font-black absolute -top-16 -left-10 opacity-[0.03] pointer-events-none group-hover:opacity-10 transition-opacity">"</span>
+                    <p class="text-2xl md:text-3xl font-bold text-white mb-10 relative z-10 leading-snug">"Une expertise
+                        technique rare alliée à une compréhension business immédiate. ARAD est devenu notre partenaire
+                        stratégique n°1."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white/10 rounded-full border border-white/20"></div>
+                        <div>
+                            <p class="font-black uppercase text-lg text-white">Sophie Martin</p>
+                            <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">CEO • GreenCommerce</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notre Histoire Section -->
+        <section id="histoire" class="py-24 px-6 md:px-12 max-w-7xl mx-auto mt-20">
+            <div class="w-full flex justify-center mb-16">
+                <h2
+                    class="text-6xl md:text-8xl font-black uppercase text-center section-title reveal-up whitespace-nowrap">
+                    NOTRE HISTOIRE</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-up">
+                    <div class="space-y-6 text-xl text-gray-300 leading-relaxed">
+                        <p>
+                            Tout a commencé dans les couloirs de notre lycée, où quatre esprits curieux se sont
+                            rencontrés autour d'une passion commune : <span class="text-white font-bold">le futur
+                                numérique</span>.
+                        </p>
+                        <p>
+                            ARAD n'est pas seulement une agence ; c'est le fruit d'une ambition partagée par quatre
+                            lycéens déterminés à repousser les limites de <span
+                                class="text-white/80 font-bold">l'automatisation créative</span>.
+                        </p>
+                        <p>
+                            De nos premières lignes de code entre deux cours à la création d'agents IA sophistiqués,
+                            notre parcours est marqué par une soif d'apprendre et une volonté de transformer le monde
+                            digital par l'innovation.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative reveal-card">
+
+
+                    <div
+                        class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] rounded-[3rem] rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800"
+                            alt="L'équipe au travail"
+                            class="w-full h-[400px] object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                        <div
+                            class="absolute -bottom-6 -right-6 bg-white text-deepblack font-black px-6 py-4 border-2 border-white/20 shadow-xl rounded-2xl -rotate-6">
+                            DEPUIS 2024
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pillar 11: Final CTA Section -->
+        <section id="cta-final"
+            class="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-white reveal-up text-center bg-white text-deepblack rounded-[4rem] mb-20 shadow-neo">
+            <h2 class="text-5xl md:text-9xl font-black mb-8 uppercase leading-tight">PRÊT À<br>AUTOMATISER ?</h2>
+            <p class="text-xl md:text-3xl font-bold uppercase mb-16 tracking-widest">Le futur n'attend pas.</p>
+            <a href="#contact"
+                class="bg-deepblack text-white px-12 py-6 text-2xl font-black uppercase rounded-full hover:scale-110 transition-transform inline-block shadow-2xl">
+                Réserver mon Audit IA
+            </a>
+        </section>
+
+        <!-- Redesigned Contact Section (Pillar 11 extended) -->
+        <section id="contact" class="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t-4 border-deeppurple mt-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <!-- Left Side: Info & Socials -->
+                <div class="reveal-up text-left">
+                    <span class="text-white font-bold uppercase tracking-[0.3em] mb-4 block">Let's Create</span>
+                    <h2
+                        class="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-12 uppercase leading-none section-title text-left">
+                        COLLABORONS ENSEMBLE
+                    </h2>
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-lg leading-relaxed">
+                        L'art ne supporte pas l'attente. Donnez vie à vos visions avec l'élite de l'automatisation
+                        artistique.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#"
+                            class="magnetic bg-white/5 border-2 border-white/10 px-6 py-3 rounded-full font-bold hover:bg-white hover:text-deepblack transition-all flex items-center gap-3 group">
+                            <span class="w-2 h-2 bg-white rounded-full group-hover:bg-deepblack"></span> INSTAGRAM
+                        </a>
+                        <a href="#"
+                            class="magnetic bg-white/5 border-2 border-white/10 px-6 py-3 rounded-full font-bold hover:bg-white hover:text-deepblack transition-all flex items-center gap-3 group">
+                            <span class="w-2 h-2 bg-white rounded-full group-hover:bg-deepblack"></span> TWITTER (X)
+                        </a>
+                        <a href="#"
+                            class="magnetic bg-white/5 border-2 border-white/10 px-6 py-3 rounded-full font-bold hover:bg-white hover:text-deepblack transition-all flex items-center gap-3 group">
+                            <span class="w-2 h-2 bg-white rounded-full group-hover:bg-deepblack"></span> BEHANCE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side: New Neobrutalist Form -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-xl border-4 border-white/10 p-10 shadow-[8px_8px_0_rgba(255,255,255,0.1)] reveal-card rounded-[3rem] relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+
+                    <form class="relative z-10 space-y-8">
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-xs mb-3 transition-colors group-focus-within/input:text-gray-300">Nom
+                                complet</label>
+                            <input type="text"
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-5 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-2xl text-white"
+                                placeholder="JEAN DUPONT">
+                        </div>
+
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-xs mb-3 transition-colors group-focus-within/input:text-gray-300">Votre
+                                Vision</label>
+                            <textarea rows="4"
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-5 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 resize-none rounded-2xl text-white"
+                                placeholder="DÉCRIVEZ VOTRE PROJET..."></textarea>
+                        </div>
+
+                        <button type="button"
+                            class="w-full bg-white text-deepblack font-black text-xl py-6 uppercase border-4 border-white shadow-[8px_8px_0_rgba(255,255,255,0.2)] hover:shadow-[12px_12px_0_rgba(255,255,255,0.4)] hover:bg-transparent hover:text-white transition-all rounded-2xl group flex items-center justify-center gap-4">
+                            ENVOYER LE MESSAGE
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                                class="group-hover:translate-x-2 transition-transform">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="bg-deepblack py-10 text-center border-t-4 border-white rounded-t-[3rem] mt-[-2px]">
+            <p class="text-gray-500 font-bold uppercase tracking-widest text-sm">© ARAD. Tous droits réservés.</p>
+        </footer>
+    </main>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,353 @@
+/* Base Reset and Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+@font-face {
+    font-family: 'Roca One';
+    src: local('Roca One'), local('RocaOne-Regular');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Roca One', 'Abril Fatface', serif;
+    overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Lenis Recommended CSS */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+/* Marquee Animation */
+.marquee {
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-33.33%);
+    }
+}
+
+/* Tech Carousel Styles - Premium 3D Coverflow */
+.tech-carousel-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 6rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech-layout-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    gap: 4rem;
+    position: relative;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tech-carousel-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    flex-shrink: 0;
+}
+
+.tech-info-panel {
+    max-width: 400px;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+    display: none;
+}
+
+.tech-layout-container.is-active .tech-info-panel {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    display: block;
+}
+
+.tech-layout-container.is-active .tech-carousel-container {
+    transform: translateX(-50px);
+}
+
+.tech-track {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.tech-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    filter: grayscale(100%) brightness(0.4);
+    opacity: 0.3;
+    transform: translateZ(-500px) scale(0.6);
+}
+
+.tech-card img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+}
+
+.tech-card span {
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.tech-card.is-active {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 50px var(--title-shadow), 0 0 20px var(--title-shadow) inset;
+}
+
+.tech-controls {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.5rem;
+    z-index: 20;
+}
+
+.tech-btn {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-link--active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+/* 3D Button Effect for Navbar CTA */
+.btn-3d-nav {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 0px 0px rgba(0, 212, 255, 0.8), 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn-3d-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px 0px rgba(0, 212, 255, 0.9), 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-3d-nav:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0px 0px rgba(0, 212, 255, 1), 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.char {
+    display: inline-block;
+}
+
+/* --- Circadian Cycle & Antigravity Styles --- */
+@layer base {
+    .hidden {
+        display: none !important;
+    }
+
+    .pointer-events-none {
+        pointer-events: none !important;
+    }
+}
+
+:root {
+    --sun-color: #FFFFFF;
+    --moon-color: #C0C0C0;
+    --brain-color: #E0E0E0;
+    --sun-halo: rgba(255, 255, 255, 0.4);
+    --moon-halo: rgba(192, 192, 192, 0.4);
+    --brain-halo: rgba(224, 224, 224, 0.4);
+    --title-gradient: linear-gradient(90deg, #FFFFFF, #C0C0C0, #808080);
+    --title-stroke: #C0C0C0;
+    --title-shadow: rgba(192, 192, 192, 0.5);
+    --accent-color: #00D4FF;
+    --neon-glow: 0 0 15px rgba(0, 212, 255, 0.4);
+
+}
+
+body.cursor-is-moon {
+    --title-gradient: linear-gradient(90deg, #FFFFFF, #E0E0E0, #A0A0A0);
+    --title-stroke: #E0E0E0;
+    --title-shadow: rgba(224, 224, 224, 0.8);
+    --accent-color: var(--moon-color);
+}
+
+.btn-neo-premium {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 4px 4px 0px 0px #00D4FF;
+}
+
+.btn-neo-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 0px 0px #00D4FF;
+}
+
+.btn-neo-premium:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0px 0px #00D4FF;
+}
+
+.section-title {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: default;
+}
+
+.section-title:hover {
+    background: linear-gradient(90deg, #00D4FF, #00D4FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateY(-5px);
+}
+
+
+.levitate {
+    animation: levitate 5s ease-in-out infinite;
+}
+
+@keyframes levitate {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.section-title {
+    color: var(--sun-color);
+    -webkit-text-stroke: 1.5px #121212;
+    text-shadow: 4px 4px 0px rgba(0, 212, 255, 0.5);
+    transition: color 0.8s ease, text-shadow 0.8s ease, -webkit-text-stroke 0.8s ease;
+}
+
+#sun-body {
+    filter: drop-shadow(0 0 50px #00D4FF) drop-shadow(0 0 100px rgba(0, 212, 255, 0.6)) drop-shadow(0 0 180px rgba(0, 212, 255, 0.4));
+}
+
+#moon-body {
+    background-color: #1a1a1a;
+    border: 2px solid #E0E0E0;
+    filter: drop-shadow(0 0 50px #E0E0E0);
+}
+
+#main-arad-title {
+    font-family: 'Syne', sans-serif;
+    color: white;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    background: var(--title-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 50px var(--title-shadow));
+    transition: all 0.8s ease;
+    letter-spacing: -0.02em;
+}
+
+/* Main Hero Title Refining */
+.main-title-arad {
+    font-family: 'EB Garamond', serif !important;
+    font-weight: 500;
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.2));
+    letter-spacing: 0.05em;
+    text-transform: none;
+    /* Let the font breathe, could be uppercase or lowercase depending on HTML */
+}
+
+.main-title-arad span {
+    transition: all 0.5s ease;
+}
+
+.main-title-arad:hover {
+    filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.5));
+}
+
+/* Active Nav Link Highlight */
+.active-nav-link {
+    border-color: #00D4FF !important;
+    color: #00D4FF !important;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
