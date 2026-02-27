@@ -243,5 +243,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-});
+    // 8. Stats Counter Animation
+    const counters = document.querySelectorAll('.counter');
+    if (counters.length > 0) {
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000; // milliseconds
+            const startTime = performance.now();
+            let hasPercent = counter.innerText.includes('%');
+            let hasPlusH = counter.innerText.includes('+') && counter.innerText.includes('h');
 
+            const updateCounter = (currentTime) => {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+
+                // easeOutQuad
+                const easeProgress = progress * (2 - progress);
+
+                const currentVal = Math.floor(easeProgress * target);
+
+                if (hasPercent) {
+                    counter.innerText = currentVal + '%';
+                } else if (hasPlusH) {
+                    counter.innerText = '+' + currentVal + 'h';
+                } else {
+                    counter.innerText = Math.floor(easeProgress * target);
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    if (hasPercent) {
+                        counter.innerText = target + '%';
+                    } else if (hasPlusH) {
+                        counter.innerText = '+' + target + 'h';
+                    } else {
+                        counter.innerText = target;
+                    }
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% visible
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    }
+
+});
