@@ -221,7 +221,7 @@ html.lenis body {
 /* --- Circadian Cycle & Antigravity Styles --- */
 @layer base {
     .hidden {
-        display: none !important;
+        display: none;
     }
 
     .pointer-events-none {
