@@ -97,9 +97,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // 2. Hero Title Animation
             const title = document.getElementById('main-arad-title');
             if (title) {
-                // Preserve the logo if it exists
+                // Surgical extraction: get the logo and the text separately
                 const logoSpan = title.querySelector('.logo-title-container');
-                const remainingText = title.innerText.replace('A', '').trim(); // Remove the "A" if it exists in text
+
+                // Get only direct text content (like "RAD") ignoring any HTML/Alt
+                const remainingText = Array.from(title.childNodes)
+                    .filter(node => node.nodeType === 3) // Text node
+                    .map(node => node.textContent)
+                    .join('')
+                    .trim();
 
                 title.innerHTML = '';
 
