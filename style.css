@@ -351,3 +351,112 @@ body.cursor-is-moon {
     color: #00D4FF !important;
     text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE ADAPTATION (MAX-WIDTH: 768PX)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* 1. Typography Scaling (-35%) */
+    h1,
+    .hero-text {
+        font-size: clamp(2rem, 10vw, 3rem) !important;
+    }
+
+    h2.section-title,
+    h2.hero-text {
+        font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
+        line-height: 1.1 !important;
+    }
+
+    /* 2. Layout & Container Safety */
+    section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    /* 3. Horizontal Scroll Carousels */
+    #solution .grid,
+    #equipe .grid,
+    #temoignages .grid {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 20px !important;
+        padding-bottom: 20px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        /* Hide scrollbar for cleaner look */
+    }
+
+    #solution .grid::-webkit-scrollbar,
+    #equipe .grid::-webkit-scrollbar,
+    #temoignages .grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Cards in carousels */
+    #solution article,
+    #equipe .group,
+    #temoignages .reveal-up>div {
+        flex: 0 0 85% !important;
+        scroll-snap-align: center !important;
+        margin: 0 !important;
+    }
+
+    /* 4. Vertical Grids (Stats & Process) */
+    #stats .grid,
+    #process .grid,
+    #pourquoi .grid,
+    #etudes .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    /* 5. Image Optimizations (object-fit: cover) */
+    img {
+        object-fit: cover !important;
+    }
+
+    #solution img,
+    #projets img,
+    #etudes img,
+    #equipe img {
+        height: 250px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* 6. Navigation & Logo */
+    #arad-logo {
+        transform: scale(0.6) !important;
+        transform-origin: left center !important;
+    }
+
+    /* 7. UI & Buttons */
+    .btn-neo-premium,
+    #contact a,
+    .bg-white.text-deepblack {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    /* 8. Disable Hovers for Touch */
+    @media (hover: none) {
+
+        .group:hover img,
+        .magnetic {
+            transform: none !important;
+            transition: none !important;
+        }
+
+        .reveal-card:hover,
+        #equipe .group:hover {
+            transform: none !important;
+        }
+    }
+}
