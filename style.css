@@ -256,6 +256,22 @@ html.lenis body {
 }
 
 
+/* Logo in Main Title */
+.main-title-arad {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-title-container {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-top: -0.05em;
+    /* Fine-tune vertical alignment with font cap-height */
+}
+
 .char {
     display: inline-block;
 }
