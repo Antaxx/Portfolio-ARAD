@@ -196,79 +196,65 @@ html.lenis body {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
-/* 3D Button Effect for Navbar CTA */
-.btn-3d-nav {
+/* Standardized Premium Button (Liquid Glow) */
+.btn-3d-nav,
+.btn-neo-premium,
+#footer-contact a,
+#contact-form button[type="button"] {
     position: relative;
-    transform-style: preserve-3d;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 4px 0px 0px rgba(0, 212, 255, 0.8), 0 8px 15px rgba(0, 0, 0, 0.4);
     overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    isolation: isolate;
+    /* Create new stacking context */
 }
 
-.btn-3d-nav::after {
+/* Common Hover State */
+.btn-3d-nav:hover,
+.btn-neo-premium:hover,
+#footer-contact a:hover,
+#contact-form button[type="button"]:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.25);
+    color: #121212 !important;
+}
+
+/* Liquid Glow Layer */
+.btn-3d-nav::before,
+.btn-neo-premium::before,
+#footer-contact a::before,
+#contact-form button[type="button"]::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg,
-            transparent,
-            rgba(255, 255, 255, 0.6),
-            transparent);
-    transition: all 0.6s ease;
+    inset: 0;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+.btn-3d-nav:hover::before,
+.btn-neo-premium:hover::before,
+#footer-contact a:hover::before,
+#contact-form button[type="button"]:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Nav Specific Glow */
+.btn-3d-nav {
+    box-shadow: 0 4px 0px 0px rgba(0, 212, 255, 0.8), 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 .btn-3d-nav:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 10px 30px rgba(0, 0, 0, 0.5);
-    background: white !important;
-}
-
-.btn-3d-nav:hover::after {
-    left: 100%;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
 }
 
 .btn-3d-nav:active {
     transform: translateY(2px);
-    box-shadow: 0 1px 0px 0px rgba(0, 212, 255, 1), 0 3px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 0px 0px rgba(0, 212, 255, 1);
 }
 
-/* Premium Neo Button Hover */
-.btn-neo-premium,
-#footer-contact a,
-#contact-form button[type="submit"] {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.btn-neo-premium:hover,
-#footer-contact a:hover,
-#contact-form button[type="submit"]:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
-    filter: brightness(1.2);
-}
-
-.btn-neo-premium::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent);
-    transform: skewX(-25deg);
-    transition: 0.5s;
-}
-
-.btn-neo-premium:hover::before {
-    left: 150%;
-}
 
 .char {
     display: inline-block;
