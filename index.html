@@ -72,38 +72,47 @@
 
     <!-- Navbar Flottante -->
     <nav
-        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-deepblack/30 backdrop-blur-xl border-[3px] border-white shadow-[0_0_20px_rgba(0,212,255,0.2)] px-8 py-4 flex items-center gap-8 rounded-full transition-transform hover:translate-y-[-2px] hover:shadow-[0_0_40px_rgba(0,212,255,0.5)] transition-all duration-300">
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-deepblack/60 md:bg-deepblack/30 backdrop-blur-xl border-[3px] border-white shadow-[0_0_20px_rgba(0,212,255,0.2)] px-6 md:px-8 py-3 md:py-4 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 rounded-[2rem] md:rounded-full transition-all duration-300 w-[90%] md:w-auto max-w-7xl">
 
-        <!-- ARAD Logo -->
-        <a href="#hero" id="arad-logo" class="flex items-center group">
-            <span class="text-sm font-black tracking-widest text-cyansun group-hover:text-white transition-colors"
-                style="font-family: 'Unbounded', sans-serif;">ARAD</span>
-        </a>
+        <div class="flex items-center justify-between w-full md:w-auto">
+            <!-- ARAD Logo -->
+            <a href="#hero" id="arad-logo" class="flex items-center group min-h-[44px]">
+                <span class="text-sm font-black tracking-widest text-cyansun group-hover:text-white transition-colors"
+                    style="font-family: 'Unbounded', sans-serif;">ARAD</span>
+            </a>
 
-        <div
-            class="flex flex-nowrap gap-x-1.5 items-center text-[8px] uppercase font-black tracking-[0.08em] justify-center whitespace-nowrap">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn"
+                class="md:hidden flex flex-col justify-center items-center w-10 h-10 border border-white/20 rounded-full focus:outline-none min-h-[44px] hover:border-cyansun transition-colors">
+                <span class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 mb-1.5 origin-center"
+                    id="mobile-bar-1"></span>
+                <span class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 origin-center"
+                    id="mobile-bar-2"></span>
+            </button>
+        </div>
+
+        <div id="nav-links"
+            class="hidden md:flex flex-col md:flex-row w-full md:w-auto bg-transparent mt-2 md:mt-0 p-2 md:p-0 gap-y-2 md:gap-x-3 items-center text-xs md:text-sm uppercase font-black tracking-[0.08em] justify-center whitespace-nowrap">
 
             <a href="#solution"
-                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Solution</a>
+                class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Solution</a>
             <a href="#stats"
-                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Chiffres</a>
+                class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Chiffres</a>
             <a href="#projets"
-                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Démos</a>
+                class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Démos</a>
             <a href="#pourquoi"
-                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Pourquoi</a>
+                class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Pourquoi</a>
             <a href="#equipe"
-                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Équipe</a>
+                class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Équipe</a>
             <a href="#temoignages"
-                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Avis</a>
-            <a href="#histoire"
-                class="px-2 py-1.5 rounded-full border border-transparent transition-all hover:text-cyansun">Histoire</a>
+                class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Avis</a>
 
         </div>
 
 
         <a href="#contact"
-            class="bg-white text-deepblack px-6 py-2.5 rounded-full font-black uppercase hover:bg-transparent hover:text-white border-2 border-cyansun transition-all shadow-[0_0_15px_rgba(0,212,255,0.4)] overflow-hidden relative group btn-3d-nav">
-            <span class="relative z-10 text-[10px] text-center w-full">COMMENCER</span>
+            class="bg-white text-deepblack px-6 py-2.5 md:py-2.5 w-full md:w-auto rounded-full font-black uppercase hover:bg-transparent hover:text-white border-2 border-cyansun transition-all shadow-[0_0_15px_rgba(0,212,255,0.4)] overflow-hidden relative group btn-3d-nav min-h-[44px] md:min-h-0 flex items-center justify-center">
+            <span class="relative z-10 text-[10px] md:text-[10px] text-center w-full">COMMENCER</span>
         </a>
     </nav>
 
@@ -137,9 +146,9 @@
                     </h2>
                 </div>
                 <div class="flex justify-center flex-wrap gap-6 reveal-up">
-                    <a href="#solution"
-                        class="bg-white text-deepblack w-full md:w-auto px-8 py-4 text-[clamp(1rem,2vw,1.25rem)] min-h-[44px] font-black border-4 border-white btn-neo-premium transition-all duration-300 magnetic inline-flex items-center justify-center rounded-full uppercase tracking-widest whitespace-nowrap">Faites
-                        passer votre entreprise au niveau supérieur</a>
+                    <a href="#contact"
+                        class="bg-white text-deepblack w-full md:w-auto px-8 py-4 text-[clamp(1rem,2vw,1.25rem)] min-h-[44px] font-black border-4 border-white btn-neo-premium transition-all duration-300 magnetic inline-flex items-center justify-center rounded-full uppercase tracking-widest whitespace-nowrap">Planifier
+                        un audit IA gratuit</a>
                 </div>
             </div>
 
@@ -1053,9 +1062,57 @@
 
         </section>
 
-        <footer class="bg-deepblack py-10 text-center border-t-4 border-white rounded-t-[3rem] mt-[-2px]">
-            <p class="text-gray-500 font-bold uppercase tracking-widest text-sm">© ARAD. Tous droits réservés.</p>
         </footer>
+        <!-- Footer Section (Contact) -->
+        <section id="contact" class="py-24 px-4 md:px-12 bg-white text-deepblack relative overflow-hidden">
+            <!-- Decorative Background Elements -->
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-cyansun/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-96 h-96 bg-cyansun/10 blur-3xl rounded-full -translate-x-1/2 translate-y-1/2">
+            </div>
+
+            <div class="max-w-5xl mx-auto relative z-10 text-center">
+                <span
+                    class="inline-block px-4 py-1 border-2 border-deepblack font-black uppercase tracking-widest text-xs mb-8">Contactez-nous</span>
+                <h2 class="text-[clamp(2.5rem,8vw,6rem)] font-black uppercase leading-none mb-8 tracking-tighter">PRÊT À
+                    AUTOMATISER VOTRE SUCCÈS ?</h2>
+                <p class="text-xl md:text-2xl font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Discutons de vos besoins et voyons comment nos agents IA peuvent transformer votre rentabilité
+                    opérationnelle dès le mois prochain.
+                </p>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <a href="mailto:contact@arad.ia"
+                        class="group bg-deepblack text-white px-10 py-5 text-xl font-black rounded-full border-4 border-deepblack hover:bg-transparent hover:text-deepblack transition-all duration-300 flex items-center gap-4 shadow-neo">
+                        NOUS ÉCRIRE
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                            class="group-hover:translate-x-1 transition-transform">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <div
+                    class="mt-20 pt-12 border-t-2 border-deepblack/10 flex flex-col md:flex-row justify-between items-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-400">
+                    <div class="flex items-center gap-8">
+                        <a href="#" class="hover:text-deepblack transition-colors">LinkedIn</a>
+                        <a href="#" class="hover:text-deepblack transition-colors">Instagram</a>
+                    </div>
+                    <span>© 2026 ARAD - TOUS DROITS RÉSERVÉS</span>
+                    <a href="#hero" class="hover:text-deepblack transition-colors flex items-center gap-2">
+                        RETOUR EN HAUT
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
 
