@@ -9,6 +9,41 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
 
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinksContainer = document.getElementById('nav-links');
+    const mobileBar1 = document.getElementById('mobile-bar-1');
+    const mobileBar2 = document.getElementById('mobile-bar-2');
+
+    if (mobileMenuBtn && navLinksContainer) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('hidden');
+            navLinksContainer.classList.toggle('flex');
+
+            // Hamburger animation
+            if (navLinksContainer.classList.contains('flex')) {
+                mobileBar1.style.transform = 'translateY(4px) rotate(45deg)';
+                mobileBar2.style.transform = 'translateY(-4px) rotate(-45deg)';
+            } else {
+                mobileBar1.style.transform = 'none';
+                mobileBar2.style.transform = 'none';
+            }
+        });
+
+        // Close menu when a link is clicked (on mobile)
+        const mobileLinks = navLinksContainer.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    navLinksContainer.classList.add('hidden');
+                    navLinksContainer.classList.remove('flex');
+                    mobileBar1.style.transform = 'none';
+                    mobileBar2.style.transform = 'none';
+                }
+            });
+        });
+    }
+
     // 1. Initialize Lenis (Smooth Scroll)
     let lenis;
     if (typeof Lenis !== 'undefined') {

@@ -1,0 +1,5 @@
+﻿62d2064f02f0cc721557b0f041c633b6c6f9448e HEAD@{0}: revert: Revert "feat: SEO and Responsive Design adaptations"
+00afc35c3af2fed403e5f8b16bdcf943c5bf76fa HEAD@{1}: commit: feat: SEO and Responsive Design adaptations
+2d7fc370d45e0eba6a7fb387c1c1fff4299cc043 HEAD@{2}: commit: Update hero section, add Mathys Mien to team, and optimize site for performance
+b9c9265c335b8fff7713f893990bbfb402de2fd9 HEAD@{3}: commit: feat(testimonials): redesign to floating dark grid
+72fd69ad068c34542fa900b7458fc59fc5713694 HEAD@{4}: commit: Animate metrics counters
