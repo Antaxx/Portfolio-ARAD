@@ -374,9 +374,11 @@ body.cursor-is-moon {
     section {
         padding-left: 20px !important;
         padding-right: 20px !important;
+        margin-bottom: 40px !important;
+        /* Spacing between major sections */
     }
 
-    /* 3. Horizontal Scroll Carousels */
+    /* 3. Horizontal Scroll Carousels & Testimonials */
     #solution .grid,
     #equipe .grid,
     #temoignages .grid {
@@ -388,7 +390,6 @@ body.cursor-is-moon {
         padding-bottom: 20px !important;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        /* Hide scrollbar for cleaner look */
     }
 
     #solution .grid::-webkit-scrollbar,
@@ -397,23 +398,33 @@ body.cursor-is-moon {
         display: none;
     }
 
-    /* Cards in carousels */
+    /* Cards min-width & snapping */
     #solution article,
     #equipe .group,
-    #temoignages .reveal-up>div {
+    #temoignages .grid>div {
         flex: 0 0 85% !important;
+        min-width: 85% !important;
         scroll-snap-align: center !important;
         margin: 0 !important;
+        overflow: hidden !important;
+        /* Fix text overflow */
+        height: auto !important;
     }
 
-    /* 4. Vertical Grids (Stats & Process) */
+    /* 4. Vertical Grids & Social Stacking */
     #stats .grid,
     #process .grid,
     #pourquoi .grid,
-    #etudes .grid {
+    #etudes .grid,
+    #contact-form .flex-col {
         display: flex !important;
         flex-direction: column !important;
         gap: 20px !important;
+    }
+
+    #contact-form .flex-col a {
+        width: 100% !important;
+        justify-content: center !important;
     }
 
     /* 5. Image Optimizations (object-fit: cover) */
@@ -430,19 +441,39 @@ body.cursor-is-moon {
         object-fit: cover !important;
     }
 
-    /* 6. Navigation & Logo */
+    /* 6. Navigation, Burger Menu & Logo */
     #arad-logo {
         transform: scale(0.6) !important;
         transform-origin: left center !important;
     }
 
-    /* 7. UI & Buttons */
+    #nav-links {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 25px !important;
+        padding: 40px 20px !important;
+        text-align: center !important;
+    }
+
+    /* 7. Button Uniformity (Width 100% & Radius) */
     .btn-neo-premium,
-    #contact a,
-    .bg-white.text-deepblack {
+    #footer-contact a,
+    .bg-white.text-deepblack,
+    button[type="button"],
+    #contact .flex-col a {
         width: 100% !important;
         display: flex !important;
         justify-content: center !important;
+        border-radius: 50px !important;
+        /* Consistent rounded-full */
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        min-height: 54px !important;
+    }
+
+    #nav-links a.rounded-full {
+        border-radius: 50px !important;
     }
 
     /* 8. Disable Hovers for Touch */
