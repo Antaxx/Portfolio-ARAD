@@ -97,9 +97,18 @@ document.addEventListener('DOMContentLoaded', () => {
             // 2. Hero Title Animation
             const title = document.getElementById('main-arad-title');
             if (title) {
-                const text = title.innerText.trim();
+                // Preserve the logo if it exists
+                const logoSpan = title.querySelector('.logo-title-container');
+                const remainingText = title.innerText.replace('A', '').trim(); // Remove the "A" if it exists in text
+
                 title.innerHTML = '';
-                text.split('').forEach(char => {
+
+                if (logoSpan) {
+                    logoSpan.classList.add('char', 'inline-block', 'opacity-0', 'translate-y-12');
+                    title.appendChild(logoSpan);
+                }
+
+                remainingText.split('').forEach(char => {
                     const span = document.createElement('span');
                     span.innerHTML = char === ' ' ? '&nbsp;' : char;
                     span.className = 'char inline-block opacity-0 translate-y-12';
