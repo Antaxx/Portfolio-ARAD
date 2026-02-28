@@ -1,0 +1,5 @@
+﻿7570e95 feat: UX/UI improvements (Hero CTA, Navbar readability, Contact section)
+2d26434 Finalize site optimization and restore mobile menu logic
+2d7fc37 Update hero section, add Mathys Mien to team, and optimize site for performance
+b9c9265 feat(testimonials): redesign to floating dark grid
+72fd69a Animate metrics counters
