@@ -380,19 +380,31 @@ body.cursor-is-moon {
 
     section,
     .container,
-    .section {
+    .section,
+    #cta-final {
         padding-left: 20px !important;
         padding-right: 20px !important;
         margin-bottom: 40px !important;
-        max-width: 100% !important;
+        max-width: 100vw !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
         box-sizing: border-box !important;
+        box-shadow: none !important;
+        /* Strip all horizontal-growing shadows */
+    }
+
+    nav {
+        width: 90% !important;
+        /* Slightly narrower to be safe */
+        box-shadow: none !important;
+        max-width: 90vw !important;
     }
 
     * {
         max-width: 100vw !important;
         box-sizing: border-box !important;
+        margin-inline: 0 !important;
+        /* Strict removal of lateral margins */
     }
 
     /* 3. Horizontal Scroll Carousels & Testimonials */
@@ -408,27 +420,42 @@ body.cursor-is-moon {
         gap: 20px !important;
         padding-bottom: 30px !important;
         padding-top: 10px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        padding-left: 20px !important;
+        /* Peek Effect Padding */
+        padding-right: 40px !important;
+        /* Safe End Scroll */
+        margin-left: -20px !important;
+        /* Offset section padding to allow edge-to-edge scroll */
+        margin-right: -20px !important;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
     }
 
     #solution .grid::-webkit-scrollbar,
     #equipe .grid::-webkit-scrollbar,
     #temoignages .grid::-webkit-scrollbar {
-        display: none;
+        display: block;
+        height: 3px;
+    }
+
+    #solution .grid::-webkit-scrollbar-thumb,
+    #equipe .grid::-webkit-scrollbar-thumb,
+    #temoignages .grid::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
     }
 
     /* Cards min-width & snapping */
     #solution article,
     #equipe .group,
     #temoignages .grid>div {
-        flex: 0 0 85vw !important;
-        /* Fixed width relative to viewport */
-        width: 85vw !important;
-        min-width: 85vw !important;
-        scroll-snap-align: center !important;
+        flex: 0 0 80vw !important;
+        /* Peek Effect: Reduce width to 80vw */
+        width: 80vw !important;
+        min-width: 80vw !important;
+        scroll-snap-align: start !important;
+        /* Align to the left (after padding) */
         margin: 0 !important;
         overflow: hidden !important;
         height: auto !important;
