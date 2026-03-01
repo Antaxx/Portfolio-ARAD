@@ -106,8 +106,6 @@
 
             <a href="#solution"
                 class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Solution</a>
-            <a href="#stats"
-                class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Chiffres</a>
             <a href="#pourquoi"
                 class="px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Pourquoi</a>
             <a href="#equipe"
@@ -144,7 +142,7 @@
                     automatisations IA pour hôtels et restaurants
                 </div>
                 <h1 id="main-arad-title"
-                    class="text-[16vw] font-black uppercase tracking-tighter m-0 opacity-100 pointer-events-none select-none transition-all duration-1000 leading-none whitespace-nowrap text-center main-title-arad flex items-center justify-center gap-[0.02em]">
+                    class="text-[clamp(4rem,20vw,15rem)] font-black leading-[0.8] tracking-tighter uppercase relative z-10 flex items-center justify-center gap-0">
                     <span class="inline-flex items-center h-[0.8em] w-[0.8em] logo-title-container">
                         <img src="logo.png" alt="A" class="h-full w-full object-contain">
                     </span>RAD
@@ -285,26 +283,6 @@
             </div>
         </section>
 
-        <!-- Pillar 4: Les chiffres -->
-        <section id="stats" class="py-16 md:py-24 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto border-t-4 border-white/5">
-            <h2
-                class="text-[clamp(2.5rem,6vw,5rem)] font-black mb-12 md:mb-16 uppercase text-center section-title leading-tight">
-                AUTOMATISATION & CHIFFRES CLÉS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="group bg-white/5 border-2 border-white/10 p-10 rounded-[3rem] text-center reveal-card">
-                    <div class="text-7xl font-black text-white mb-2 counter" data-target="100">+0h</div>
-                    <p class="text-gray-400 font-bold uppercase tracking-widest">Gagnées / mois</p>
-                </div>
-                <div class="group bg-white/5 border-2 border-white/10 p-10 rounded-[3rem] text-center reveal-card">
-                    <div class="text-7xl font-black text-white mb-2 counter" data-target="100">0%</div>
-                    <p class="text-gray-400 font-bold uppercase tracking-widest">Satisfactions Clients</p>
-                </div>
-                <div class="group bg-white/5 border-2 border-white/10 p-10 rounded-[3rem] text-center reveal-card">
-                    <div class="text-7xl font-black text-white mb-2 counter" data-target="12">0</div>
-                    <p class="text-gray-400 font-bold uppercase tracking-widest">Partenaires</p>
-                </div>
-            </div>
-        </section>
 
 
 
@@ -504,121 +482,6 @@
             </div>
         </section>
 
-        <!-- Études de Cas Section -->
-        <section id="etudes" class="py-16 md:py-24 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto border-t-4 border-white/5">
-            <h2
-                class="text-[clamp(2.5rem,6vw,5rem)] font-black mb-12 md:mb-16 uppercase text-center section-title leading-tight">
-                ÉTUDES DE CAS : AUTOMATISATION</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Case Study 1: Hôtel -->
-                <article
-                    class="group bg-[#1a1a1a]/60 backdrop-blur-xl border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[3rem] flex flex-col h-full">
-                    <div class="mb-8 flex items-center gap-4">
-                        <div
-                            class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/10">
-                            <span class="text-white font-black">01</span>
-                        </div>
-                        <h3 class="text-2xl font-black uppercase text-white leading-none">Hôtellerie<br>Automatisée</h3>
-                    </div>
-
-                    <div class="space-y-6 flex-grow">
-                        <div>
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gray-500 block mb-2">Problème</span>
-                            <p class="text-gray-300">Un hôtel reçoit plus de 30 appels par jour pour des questions
-                                répétitives (horaires, parking, Wi-Fi).</p>
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-cyansun block mb-2">Solution
-                                ARAD</span>
-                            <p class="text-white font-medium">Déploiement d'un agent IA vocal et textuel multilingue
-                                disponible 24/7.</p>
-                        </div>
-                        <div>
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent block mb-2">Résultat</span>
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-5xl font-black text-white">-60%</span>
-                                <span class="text-gray-400 font-bold uppercase text-xs">d'appels entrants</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Case Study 2: E-commerce -->
-                <article
-                    class="group bg-[#1a1a1a]/60 backdrop-blur-xl border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[3rem] flex flex-col h-full md:translate-y-12">
-                    <div class="mb-8 flex items-center gap-4">
-                        <div
-                            class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/10">
-                            <span class="text-white font-black">02</span>
-                        </div>
-                        <h3 class="text-2xl font-black uppercase text-white leading-none">Support<br>E-commerce</h3>
-                    </div>
-
-                    <div class="space-y-6 flex-grow">
-                        <div>
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gray-500 block mb-2">Problème</span>
-                            <p class="text-gray-300">Temps de réponse moyen de 18h pendant le week-end, entraînant une
-                                perte de confiance client.</p>
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-cyansun block mb-2">Solution
-                                ARAD</span>
-                            <p class="text-white font-medium">Bot FAQ intelligent synchronisé en temps réel avec le
-                                stock et les CGV.</p>
-                        </div>
-                        <div>
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent block mb-2">Résultat</span>
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-5xl font-black text-white">85%</span>
-                                <span class="text-gray-400 font-bold uppercase text-xs">de résolution instantanée</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Case Study 3: Sales -->
-                <article
-                    class="group bg-[#1a1a1a]/60 backdrop-blur-xl border-4 border-white/10 p-10 shadow-neo-nav hover:shadow-neo hover:-translate-y-2 transition-all duration-500 reveal-card rounded-[3rem] flex flex-col h-full lg:translate-y-24">
-                    <div class="mb-8 flex items-center gap-4">
-                        <div
-                            class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/10">
-                            <span class="text-white font-black">03</span>
-                        </div>
-                        <h3 class="text-2xl font-black uppercase text-white leading-none">Qualification<br>de Leads</h3>
-                    </div>
-
-                    <div class="space-y-6 flex-grow">
-                        <div>
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gray-500 block mb-2">Problème</span>
-                            <p class="text-gray-300">60% du temps des commerciaux est gâché à trier des prospects
-                                non-qualifiés.</p>
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-cyansun block mb-2">Solution
-                                ARAD</span>
-                            <p class="text-white font-medium">Système de scoring automatique via IA analysant le profil
-                                et les besoins.</p>
-                        </div>
-                        <div>
-                            <span
-                                class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent block mb-2">Résultat</span>
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-5xl font-black text-white">+40%</span>
-                                <span class="text-gray-400 font-bold uppercase text-xs">de conversion RDV</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
 
         <!-- Team Section -->
         <section id="equipe"
