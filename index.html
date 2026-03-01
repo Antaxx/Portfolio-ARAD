@@ -150,7 +150,7 @@
                 <h1 id="main-arad-title"
                     class="text-[clamp(4rem,20vw,15rem)] font-black leading-[0.8] tracking-tighter uppercase relative z-10 flex items-center justify-center gap-0">
                     <span class="inline-flex items-center h-[0.8em] w-[0.8em] logo-title-container">
-                        <img src="logo.png" alt="A" class="h-full w-full object-contain">
+                        <img src="logo-highres.png" alt="A" class="h-full w-full object-contain">
                     </span>RAD
                 </h1>
             </div>
@@ -269,11 +269,16 @@
                         class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
                     <div class="relative z-10">
-                        <div class="h-64 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                        <div class="h-64 overflow-hidden rounded-2xl mb-8 border-2 border-white/5 relative">
                             <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=800&fm=webp"
                                 alt="Intelligence Artificielle de gestion des avis Google - ARAD" loading="lazy"
                                 decoding="async" width="800" height="600"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <div
+                                class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-lg border border-white/20">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                                    alt="Google" class="w-8 h-8 object-contain">
+                            </div>
                         </div>
                         <h3 class="text-4xl font-black mb-4 uppercase">Réponse aux Avis</h3>
                         <p class="text-gray-400 text-lg mb-8 leading-relaxed">
@@ -364,38 +369,42 @@
                 <div class="tech-carousel-container">
                     <div class="tech-track">
                         <div class="tech-card" title="n8n"
-                            data-description="Puissant outil d'automatisation des flux de travail. Il nous permet de connecter n'importe quelle API avec n'importe quelle autre.">
-                            <img src="https://cdn.simpleicons.org/n8n/FF6C37" alt="n8n">
+                            data-description="La référence de l'automatisation workflow-based. Nous l'utilisons pour orchestrer vos processus les plus complexes en toute fluidité.">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/N8n-logo-new.svg" alt="n8n">
                             <span>n8n</span>
                         </div>
                         <!-- Gemini -->
                         <div class="tech-card" title="Google Gemini"
-                            data-description="L'IA multimodale de pointe de Google, capable de raisonnement complexe et de génération de contenu de haute qualité.">
-                            <img src="https://cdn.simpleicons.org/googlegemini/8E75FF" alt="Gemini">
+                            data-description="L'IA multimodale de pointe de Google, capable de raisonnement complexe et de génération de contenu de haute fidélité.">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg"
+                                alt="Gemini">
                             <span>Gemini</span>
                         </div>
                         <!-- Claude -->
                         <div class="tech-card" title="Anthropic Claude"
-                            data-description="L'IA championne du raisonnement éthique et de l'analyse textuelle nuancée, idéale pour les agents conversationnels sophistiqués.">
-                            <img src="https://cdn.simpleicons.org/anthropic/white" alt="Claude">
+                            data-description="L'IA championne du raisonnement éthique et de l'analyse textuelle nuancée, idéale pour vos agents conversationnels.">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Claude_AI_logo.svg"
+                                alt="Claude">
                             <span>Claude</span>
                         </div>
                         <!-- Notion -->
                         <div class="tech-card" title="Notion"
-                            data-description="Le cerveau opérationnel de notre agence. Centralisation de la donnée, documentation et gestion de projet agile.">
-                            <img src="https://cdn.simpleicons.org/notion/white" alt="Notion">
+                            data-description="L'espace de travail unifié où nous centralisons vos bases de connaissances pour alimenter nos agents IA.">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion-logo.svg" alt="Notion">
                             <span>Notion</span>
                         </div>
                         <!-- Antigravity -->
                         <div class="tech-card" title="Antigravity"
-                            data-description="La technologie propriétaire d'ARAD pour le pilotage d'agents autonomes, repoussant les limites de l'automatisation intelligente.">
-                            <img src="https://cdn.simpleicons.org/ansible/00D4FF" alt="Antigravity">
+                            data-description="Noyau d'intelligence propriétaire optimisant la réactivité et l'autonomie de nos solutions d'automatisation.">
+                            <img src="logo.png" alt="ARAD Antigravity"
+                                class="object-contain filter brightness-0 invert">
                             <span>Antigravity</span>
                         </div>
                         <!-- Google AI Studio -->
                         <div class="tech-card" title="Google AI Studio"
-                            data-description="L'environnement de développement spécialisé pour l'optimisation des modèles Gemini via le Prompt Engineering avancé.">
-                            <img src="https://cdn.simpleicons.org/google/white" alt="Google AI Studio">
+                            data-description="L'environnement d'élite pour le prototypage et le déploiement sécurisé des modèles de langage les plus performants.">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Google_AI_Studio_icon_%28July_2025%29.svg"
+                                alt="AI Studio">
                             <span>AI Studio</span>
                         </div>
                     </div>
