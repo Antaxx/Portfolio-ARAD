@@ -156,12 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 5. Active Navbar Link Highlighting
             const sections = document.querySelectorAll('section[id], footer[id]');
-            const navLinks = document.querySelectorAll('nav .flex-nowrap a[href^="#"]');
+            const navLinks = document.querySelectorAll('#nav-links a[href^="#"]');
 
             if (sections.length > 0 && navLinks.length > 0) {
                 const observerOptions = {
                     root: null,
-                    rootMargin: '-30% 0px -70% 0px', // Trigger slightly above middle
+                    rootMargin: '-20% 0px -75% 0px', // Trigger slightly above middle for better feel
                     threshold: 0
                 };
 
