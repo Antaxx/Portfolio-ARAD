@@ -278,20 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. Team Card 3D Tilt
-    document.querySelectorAll('#equipe .group').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            if (typeof gsap === 'undefined') return;
-            const rect = card.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width - 0.5) * 30;
-            const y = ((e.clientY - rect.top) / rect.height - 0.5) * -30;
-            gsap.to(card, { rotateX: y, rotateY: x, transformPerspective: 1000, duration: 0.5 });
-        });
-        card.addEventListener('mouseleave', () => {
-            if (typeof gsap === 'undefined') return;
-            gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.7 });
-        });
-    });
+    // 7. Team Card 3D Tilt - REMOVED
 
     // 8. Stats Counter Animation
     const counters = document.querySelectorAll('.counter');
