@@ -95,23 +95,23 @@ html.lenis body {
 }
 
 .tech-info-panel {
-    max-width: 400px;
+    max-width: 500px;
     opacity: 0;
-    transform: translateX(50px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateX(-50px);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     pointer-events: none;
-    display: none;
+    display: block;
+    /* Always block but transparent */
 }
 
 .tech-layout-container.is-active .tech-info-panel {
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
-    display: block;
 }
 
 .tech-layout-container.is-active .tech-carousel-container {
-    transform: translateX(-50px);
+    transform: translateX(50px);
 }
 
 .tech-track {
