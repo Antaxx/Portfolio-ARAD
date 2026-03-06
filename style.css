@@ -252,7 +252,7 @@ html.lenis body {
 
 .btn-3d-nav:active {
     transform: translateY(2px);
-    box-shadow: 0 2px 0px 0px rgba(0, 212, 255, 1);
+    box-shadow: 0 2px 0px 0px rgba(255, 255, 255, 0.5);
 }
 
 
@@ -389,7 +389,7 @@ body.cursor-is-moon {
     font-weight: 500;
     color: #FFFFFF !important;
     -webkit-text-fill-color: #FFFFFF !important;
-    filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.2));
+    filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.15));
     letter-spacing: 0.05em;
     text-transform: none;
     /* Let the font breathe, could be uppercase or lowercase depending on HTML */
