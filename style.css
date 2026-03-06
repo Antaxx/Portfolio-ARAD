@@ -214,7 +214,7 @@ html.lenis body {
 #footer-contact a:hover,
 #contact-form button[type="button"]:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.25);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
     color: #121212 !important;
 }
 
@@ -243,11 +243,11 @@ html.lenis body {
 
 /* Nav Specific Glow */
 .btn-3d-nav {
-    box-shadow: 0 4px 0px 0px rgba(0, 212, 255, 0.8), 0 8px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 0px 0px rgba(255, 255, 255, 0.5), 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 .btn-3d-nav:hover {
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
 .btn-3d-nav:active {
@@ -296,9 +296,9 @@ html.lenis body {
     --brain-halo: rgba(224, 224, 224, 0.4);
     --title-gradient: linear-gradient(90deg, #FFFFFF, #C0C0C0, #808080);
     --title-stroke: #C0C0C0;
-    --title-shadow: rgba(192, 192, 192, 0.5);
-    --accent-color: #00D4FF;
-    --neon-glow: 0 0 15px rgba(0, 212, 255, 0.4);
+    --title-shadow: rgba(255, 255, 255, 0.3);
+    --accent-color: #FFFFFF;
+    --neon-glow: 0 0 15px rgba(255, 255, 255, 0.2);
 
 }
 
@@ -311,17 +311,17 @@ body.cursor-is-moon {
 
 .btn-neo-premium {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 4px 4px 0px 0px #00D4FF;
+    box-shadow: 4px 4px 0px 0px #FFFFFF;
 }
 
 .btn-neo-premium:hover {
     transform: translateY(-2px);
-    box-shadow: 8px 8px 0px 0px #00D4FF;
+    box-shadow: 8px 8px 0px 0px #FFFFFF;
 }
 
 .btn-neo-premium:active {
     transform: translateY(2px);
-    box-shadow: 2px 2px 0px 0px #00D4FF;
+    box-shadow: 2px 2px 0px 0px #FFFFFF;
 }
 
 .section-title {
@@ -330,7 +330,7 @@ body.cursor-is-moon {
 }
 
 .section-title:hover {
-    background: linear-gradient(90deg, #00D4FF, #00D4FF);
+    background: linear-gradient(90deg, #FFFFFF, #FFFFFF);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -357,12 +357,12 @@ body.cursor-is-moon {
 .section-title {
     color: var(--sun-color);
     -webkit-text-stroke: 1.5px #121212;
-    text-shadow: 4px 4px 0px rgba(0, 212, 255, 0.5);
+    text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.5);
     transition: color 0.8s ease, text-shadow 0.8s ease, -webkit-text-stroke 0.8s ease;
 }
 
 #sun-body {
-    filter: drop-shadow(0 0 50px #00D4FF) drop-shadow(0 0 100px rgba(0, 212, 255, 0.6)) drop-shadow(0 0 180px rgba(0, 212, 255, 0.4));
+    filter: drop-shadow(0 0 50px #FFFFFF) drop-shadow(0 0 100px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 180px rgba(255, 255, 255, 0.2));
 }
 
 #moon-body {
@@ -400,14 +400,14 @@ body.cursor-is-moon {
 }
 
 .main-title-arad:hover {
-    filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.5));
+    filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.5));
 }
 
 /* Active Nav Link Highlight */
 .active-nav-link {
-    border-color: #00D4FF !important;
-    color: #00D4FF !important;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+    border-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 /* ============================================================
