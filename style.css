@@ -284,6 +284,11 @@ body.cursor-is-moon {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
+/* Ensure the CTA button remains readable even if it gets the active class */
+.btn-3d-nav.active-nav-link {
+    color: #121212 !important;
+}
+
 /* ============================================================
    MOBILE RESPONSIVE ADAPTATION (MAX-WIDTH: 768PX)
    ============================================================ */
