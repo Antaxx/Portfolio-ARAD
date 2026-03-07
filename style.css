@@ -287,6 +287,8 @@ body.cursor-is-moon {
 /* Ensure the CTA button remains readable even if it gets the active class */
 .btn-3d-nav.active-nav-link {
     color: #121212 !important;
+    border-color: #00D4FF !important;
+    /* Keep the cyansun color or use a darker one */
 }
 
 /* ============================================================
