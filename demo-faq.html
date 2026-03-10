@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démo Agent FAQ | ARAD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="new-logo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Outfit:wght@400;700;900&family=Space+Grotesk:wght@300;400;700&family=Syne:wght@800&family=Unbounded:wght@900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepblack: '#121212',
+                        sunset: '#E0E0E0',
+                        cyansun: '#D4D4D4',
+                    },
+                    fontFamily: {
+                        roca: ['"Roca One"', 'serif', 'sans-serif'],
+                        outfit: ['"Outfit"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-deepblack text-white font-outfit h-screen flex flex-col bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/5 via-deepblack to-deepblack">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl flex justify-between items-center px-6 py-4">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <div
+                class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                <span class="text-xl">←</span>
+            </div>
+            <span
+                class="text-sm font-bold uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">Retour</span>
+        </a>
+        <div class="text-xs font-black tracking-widest uppercase opacity-40">ARAD AI Lab / 02</div>
+    </nav>
+
+    <main class="flex-1 flex flex-col items-center justify-center p-6 pt-24 pb-12">
+        <div
+            class="max-w-4xl w-full flex flex-col h-full bg-[#1a1a1a]/40 backdrop-blur-xl border-4 border-white/10 rounded-[3rem] overflow-hidden shadow-2xl">
+
+            <!-- Chat Header -->
+            <div class="p-8 border-b border-white/10 flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-black uppercase font-roca tracking-wider">Agent FAQ Intelligente</h1>
+                    <p class="text-[10px] text-cyansun uppercase font-bold tracking-[0.2em] mt-1">Status: Online &
+                        Learning</p>
+                </div>
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <span class="text-black text-xl">💬</span>
+                </div>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-8 space-y-6 scrollbar-hide">
+                <div class="flex flex-col items-start max-w-[80%]">
+                    <div class="bg-white/10 px-6 py-4 rounded-3xl rounded-tl-none border border-white/5">
+                        <p class="text-sm leading-relaxed text-gray-200">Bonjour ! Je suis l'IA ARAD configurée pour
+                            vore établissement. Posez-moi n'importe quelle question sur nos services, nos horaires ou
+                            nos tarifs.</p>
+                    </div>
+                    <span class="text-[10px] uppercase font-bold text-white/30 mt-2 ml-4">IA ARAD • À l'instant</span>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-6 bg-deepblack/40 border-t border-white/10">
+                <form id="chat-form" class="flex gap-4">
+                    <input type="text" id="chat-input" placeholder="Écrivez votre question ici..."
+                        class="flex-1 bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-white transition-all font-medium placeholder:text-white/20">
+                    <button type="submit"
+                        class="bg-white text-black px-8 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-transform">Envoyer</button>
+                </form>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <button
+                        class="quick-ask text-[10px] uppercase font-black tracking-widest px-4 py-2 rounded-full border border-white/10 hover:border-white transition-colors">Horaires</button>
+                    <button
+                        class="quick-ask text-[10px] uppercase font-black tracking-widest px-4 py-2 rounded-full border border-white/10 hover:border-white transition-colors">Tarifs
+                        IA</button>
+                    <button
+                        class="quick-ask text-[10px] uppercase font-black tracking-widest px-4 py-2 rounded-full border border-white/10 hover:border-white transition-colors">Comment
+                        ça marche ?</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const responses = {
+            "horaires": "Nos services d'IA sont opérationnels 24h/24 et 7j/7. Nous restons disponibles pour le support humain du lundi au vendredi, de 17h à 21h.",
+            "tarifs ia": "Nos offres commencent à partir de 199€/mois pour l'Agent FAQ. Pour un assistant vocal haute fidélité, comptez 399€/mois. La mise en place est actuellement OFFERTE !",
+            "comment ça marche ?": "C'est simple : nous analysons vos besoins, nous créons un agent personnalisé entraîné sur vos données spécifiques, et nous l'intégrons directement sur votre site en moins de 48h.",
+            "default": "C'est une excellente question ! Mon intelligence est entraînée spécifiquement sur les besoins de votre entreprise pour fournir une réponse précise et immédiate."
+        };
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            addMessage(text, 'user');
+            chatInput.value = '';
+
+            setTimeout(() => {
+                let lowerText = text.toLowerCase();
+                let response = responses.default;
+
+                if (lowerText.includes('horaire')) response = responses.horaires;
+                else if (lowerText.includes('tarif')) response = responses.tarifs;
+                else if (lowerText.includes('marche')) response = responses["comment ça marche ?"];
+
+                addMessage(response, 'ai');
+            }, 800);
+        });
+
+        document.querySelectorAll('.quick-ask').forEach(btn => {
+            btn.addEventListener('click', () => {
+                chatInput.value = btn.innerText;
+                chatForm.dispatchEvent(new Event('submit'));
+            });
+        });
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = sender === 'user' ? 'flex flex-col items-end' : 'flex flex-col items-start max-w-[80%]';
+
+            const contentClass = sender === 'user'
+                ? 'bg-white text-black px-6 py-4 rounded-3xl rounded-tr-none font-bold'
+                : 'bg-white/10 px-6 py-4 rounded-3xl rounded-tl-none border border-white/5 text-gray-200';
+
+            div.innerHTML = `
+                <div class="${contentClass} shadow-xl">
+                    <p class="text-sm leading-relaxed">${text}</p>
+                </div>
+                <span class="text-[10px] uppercase font-bold text-white/30 mt-2 ${sender === 'user' ? 'mr-4' : 'ml-4'}">${sender === 'user' ? 'Vous' : 'IA ARAD'} • À l'instant</span>
+            `;
+
+            chatMessages.appendChild(div);
+            gsap.from(div, { y: 20, opacity: 0, duration: 0.5, ease: 'power2.out' });
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
+</body>
+
+</html>

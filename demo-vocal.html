@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démo Assistant Vocal | ARAD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="new-logo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Outfit:wght@400;700;900&family=Space+Grotesk:wght@300;400;700&family=Syne:wght@800&family=Unbounded:wght@900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepblack: '#121212',
+                        sunset: '#E0E0E0',
+                        cyansun: '#D4D4D4',
+                    },
+                    fontFamily: {
+                        roca: ['"Roca One"', 'serif', 'sans-serif'],
+                        outfit: ['"Outfit"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .orb-outer {
+            filter: blur(40px);
+            transition: all 0.5s ease;
+        }
+
+        .recording .orb-outer {
+            filter: blur(60px);
+            transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .pulse {
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(.33);
+            }
+
+            80%,
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-deepblack text-white font-outfit overflow-hidden h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl flex justify-between items-center px-6 py-4">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <div
+                class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                <span class="text-xl">←</span>
+            </div>
+            <span
+                class="text-sm font-bold uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">Retour</span>
+        </a>
+        <div class="text-xs font-black tracking-widest uppercase opacity-40">ARAD AI Lab / 01</div>
+    </nav>
+
+    <main class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+        <div class="max-w-2xl w-full">
+            <h1 class="text-4xl md:text-6xl font-black uppercase mb-6 font-roca">Assistant Vocal</h1>
+            <p class="text-gray-400 text-lg mb-12">Cliquez sur l'orb pour lancer une simulation de conversation vocale
+                avec notre IA.</p>
+
+            <!-- Voice Orb Component -->
+            <div class="relative w-64 h-64 mx-auto mb-16 flex items-center justify-center cursor-pointer"
+                id="voice-trigger">
+                <div class="orb-outer absolute inset-0 bg-white/20 rounded-full"></div>
+                <div
+                    class="orb-inner relative w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.3)] transition-transform hover:scale-110">
+                    <span id="orb-icon" class="text-black text-4xl">🎙️</span>
+                </div>
+                <div id="orb-status"
+                    class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-black uppercase tracking-[0.3em] opacity-50">
+                    Prêt à écouter</div>
+            </div>
+
+            <!-- Dialogue Simulation -->
+            <div id="dialogue-box" class="h-24 opacity-0 transition-opacity duration-500 overflow-hidden">
+                <p id="ai-text" class="text-2xl font-roca italic text-white/80"></p>
+                <p id="user-text" class="text-sm uppercase tracking-widest text-white/40 mt-2"></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        const trigger = document.getElementById('voice-trigger');
+        const status = document.getElementById('orb-status');
+        const icon = document.getElementById('orb-icon');
+        const dialogueBox = document.getElementById('dialogue-box');
+        const aiText = document.getElementById('ai-text');
+        const userText = document.getElementById('user-text');
+
+        let isActive = false;
+        const script = [
+            { user: "Bonjour ARAD, je voudrais réserver une table.", ai: "Bonjour ! Bienvenue chez ARAD. Pour combien de personnes ?" },
+            { user: "Pour 4 personnes, vendredi soir à 20h.", ai: "C'est noté. J'ai de la place pour 4 personnes ce vendredi à 20h. Je confirme ?" },
+            { user: "Oui, c'est parfait. Merci.", ai: "C'est confirmé ! Vous recevrez un SMS de confirmation. À bientôt !" }
+        ];
+        let step = 0;
+
+        trigger.addEventListener('click', () => {
+            if (isActive) return;
+            startSimulation();
+        });
+
+        function startSimulation() {
+            isActive = true;
+            trigger.classList.add('recording');
+            status.innerText = "IA en écoute...";
+            icon.innerText = "⚡";
+
+            gsap.to(dialogueBox, { opacity: 1, duration: 0.5 });
+
+            nextStep();
+        }
+
+        function nextStep() {
+            if (step >= script.length) {
+                status.innerText = "Simulation terminée";
+                icon.innerText = "✅";
+                setTimeout(() => {
+                    gsap.to(dialogueBox, { opacity: 0 });
+                    isActive = false;
+                    step = 0;
+                    trigger.classList.remove('recording');
+                    icon.innerText = "🎙️";
+                    status.innerText = "Prêt à écouter";
+                }, 3000);
+                return;
+            }
+
+            userText.innerText = script[step].user;
+            aiText.innerText = "...";
+
+            setTimeout(() => {
+                aiText.innerText = script[step].ai;
+                status.innerText = "IA en train de parler...";
+                step++;
+                setTimeout(nextStep, 3500);
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
