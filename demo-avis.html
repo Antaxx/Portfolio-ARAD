@@ -48,45 +48,34 @@
     </nav>
 
     <main class="w-full max-w-4xl pt-20 pb-12">
-        <div class="text-center mb-12 reveal-up">
+        <div class="text-center mb-12">
             <h1 class="text-4xl md:text-6xl font-black uppercase font-roca mb-4 leading-tight">Générateur de Réponses
-                <br><span class="text-white/40 italic">Avis Google</span></h1>
-            <p class="text-gray-400 text-lg max-w-2xl mx-auto">Collez un avis client ci-dessous et laissez l'IA ARAD
-                générer une réponse parfaite, polie et stratégique en quelques secondes.</p>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">Interface UI prête pour connexion n8n. Le bouton enverra
+                le texte à votre workflow pour générer une réponse.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             <!-- Input Side -->
             <div class="bg-white/5 border-4 border-white/10 p-8 rounded-[3rem] shadow-2xl flex flex-col">
-                <label class="text-[10px] uppercase font-black tracking-[0.3em] text-white/40 mb-4 ml-2">Avis Client
-                    (Exemple)</label>
+                <label class="text-[10px] uppercase font-black tracking-[0.3em] text-white/40 mb-4 ml-2">Avis
+                    Client</label>
                 <textarea id="review-input" rows="6"
                     class="flex-1 bg-deepblack/40 border-2 border-white/10 p-6 rounded-2xl focus:outline-none focus:border-white transition-all text-sm font-medium resize-none placeholder-white/10 text-white"
-                    placeholder='"Nous avons passé un excellent moment, les plats étaient délicieux mais le service un peu lent ce soir-là..."'>Nous avons passé un excellent moment, les plats étaient délicieux mais le service un peu lent ce soir-là.</textarea>
+                    placeholder="Collez un avis ici..."></textarea>
                 <button id="btn-generate"
-                    class="mt-8 bg-white text-black py-4 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-transform flex items-center justify-center gap-2">Générer
-                    la Réponse <span class="text-xl">✨</span></button>
+                    class="mt-8 bg-white text-black py-4 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-transform">Générer
+                    via n8n</button>
             </div>
 
             <!-- Output Side -->
             <div
                 class="bg-[#1a1a1a]/40 backdrop-blur-3xl border-4 border-white/10 p-8 rounded-[3rem] shadow-2xl flex flex-col relative overflow-hidden">
-                <div id="loading" class="absolute inset-0 bg-deepblack/80 flex items-center justify-center z-10 hidden">
-                    <div class="animate-spin w-8 h-8 border-4 border-white border-t-transparent rounded-full"></div>
-                </div>
-
-                <label class="text-[10px] uppercase font-black tracking-[0.3em] text-white/40 mb-4 ml-2">Réponse de l'IA
-                    ARAD</label>
+                <label class="text-[10px] uppercase font-black tracking-[0.3em] text-white/40 mb-4 ml-2">Réponse
+                    générée</label>
                 <div id="response-output"
-                    class="flex-1 text-sm leading-relaxed text-gray-300 font-medium italic opacity-40">
-                    La réponse générée apparaîtra ici...
-                </div>
-
-                <div class="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span class="text-[8px] uppercase font-black text-white/40 mt-0.5">IA Optimisée SEO</span>
-                    </div>
+                    class="flex-1 text-sm leading-relaxed text-gray-300 font-medium italic opacity-20">
+                    En attente de traitement...
                 </div>
             </div>
         </div>
@@ -96,26 +85,12 @@
     <script>
         const btn = document.getElementById('btn-generate');
         const input = document.getElementById('review-input');
-        const output = document.getElementById('response-output');
-        const loading = document.getElementById('loading');
 
         btn.addEventListener('click', () => {
             const text = input.value.trim();
             if (!text) return;
-
-            // Show loading
-            loading.classList.remove('hidden');
-
-            setTimeout(() => {
-                loading.classList.add('hidden');
-
-                let response = "Bonjour, \n\nMerci beaucoup pour votre retour constructif ! Nous sommes ravis que nos plats vous aient plu. \n\nNous prenons bien note de votre remarque concernant le temps d'attente lors de votre visite. Soyez assuré que nous mettons tout en œuvre pour améliorer notre rapidité de service afin que votre prochaine expérience soit parfaite en tout point.\n\nAu plaisir de vous revoir bientôt ! \n\nL'équipe ARAD";
-
-                output.innerText = response;
-                output.classList.remove('opacity-40');
-
-                gsap.from(output, { opacity: 0, y: 10, duration: 1 });
-            }, 1500);
+            console.log("Texte de l'avis à envoyer à n8n :", text);
+            // ICI : Fetch vers webhook n8n
         });
     </script>
 </body>

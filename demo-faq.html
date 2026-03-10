@@ -54,9 +54,9 @@
             <!-- Chat Header -->
             <div class="p-8 border-b border-white/10 flex items-center justify-between">
                 <div>
-                    <h1 class="text-2xl font-black uppercase font-roca tracking-wider">Agent FAQ Intelligente</h1>
-                    <p class="text-[10px] text-cyansun uppercase font-bold tracking-[0.2em] mt-1">Status: Online &
-                        Learning</p>
+                    <h1 class="text-2xl font-black uppercase font-roca tracking-wider">Agent FAQ</h1>
+                    <p class="text-[10px] text-cyansun uppercase font-bold tracking-[0.2em] mt-1">Prêt pour connexion
+                        n8n</p>
                 </div>
                 <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
                     <span class="text-black text-xl">💬</span>
@@ -67,32 +67,20 @@
             <div id="chat-messages" class="flex-1 overflow-y-auto p-8 space-y-6 scrollbar-hide">
                 <div class="flex flex-col items-start max-w-[80%]">
                     <div class="bg-white/10 px-6 py-4 rounded-3xl rounded-tl-none border border-white/5">
-                        <p class="text-sm leading-relaxed text-gray-200">Bonjour ! Je suis l'IA ARAD configurée pour
-                            vore établissement. Posez-moi n'importe quelle question sur nos services, nos horaires ou
-                            nos tarifs.</p>
+                        <p class="text-sm leading-relaxed text-gray-200">Bonjour ! Cette interface est prête à être
+                            reliée à votre agent n8n. Les messages s'afficheront ici dynamiquement.</p>
                     </div>
-                    <span class="text-[10px] uppercase font-bold text-white/30 mt-2 ml-4">IA ARAD • À l'instant</span>
                 </div>
             </div>
 
             <!-- Input Area -->
             <div class="p-6 bg-deepblack/40 border-t border-white/10">
                 <form id="chat-form" class="flex gap-4">
-                    <input type="text" id="chat-input" placeholder="Écrivez votre question ici..."
+                    <input type="text" id="chat-input" placeholder="Poser une question (Interface seule)..."
                         class="flex-1 bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-white transition-all font-medium placeholder:text-white/20">
                     <button type="submit"
                         class="bg-white text-black px-8 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-transform">Envoyer</button>
                 </form>
-                <div class="mt-4 flex flex-wrap gap-2">
-                    <button
-                        class="quick-ask text-[10px] uppercase font-black tracking-widest px-4 py-2 rounded-full border border-white/10 hover:border-white transition-colors">Horaires</button>
-                    <button
-                        class="quick-ask text-[10px] uppercase font-black tracking-widest px-4 py-2 rounded-full border border-white/10 hover:border-white transition-colors">Tarifs
-                        IA</button>
-                    <button
-                        class="quick-ask text-[10px] uppercase font-black tracking-widest px-4 py-2 rounded-full border border-white/10 hover:border-white transition-colors">Comment
-                        ça marche ?</button>
-                </div>
             </div>
         </div>
     </main>
@@ -103,13 +91,6 @@
         const chatInput = document.getElementById('chat-input');
         const chatMessages = document.getElementById('chat-messages');
 
-        const responses = {
-            "horaires": "Nos services d'IA sont opérationnels 24h/24 et 7j/7. Nous restons disponibles pour le support humain du lundi au vendredi, de 17h à 21h.",
-            "tarifs ia": "Nos offres commencent à partir de 199€/mois pour l'Agent FAQ. Pour un assistant vocal haute fidélité, comptez 399€/mois. La mise en place est actuellement OFFERTE !",
-            "comment ça marche ?": "C'est simple : nous analysons vos besoins, nous créons un agent personnalisé entraîné sur vos données spécifiques, et nous l'intégrons directement sur votre site en moins de 48h.",
-            "default": "C'est une excellente question ! Mon intelligence est entraînée spécifiquement sur les besoins de votre entreprise pour fournir une réponse précise et immédiate."
-        };
-
         chatForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const text = chatInput.value.trim();
@@ -118,23 +99,8 @@
             addMessage(text, 'user');
             chatInput.value = '';
 
-            setTimeout(() => {
-                let lowerText = text.toLowerCase();
-                let response = responses.default;
-
-                if (lowerText.includes('horaire')) response = responses.horaires;
-                else if (lowerText.includes('tarif')) response = responses.tarifs;
-                else if (lowerText.includes('marche')) response = responses["comment ça marche ?"];
-
-                addMessage(response, 'ai');
-            }, 800);
-        });
-
-        document.querySelectorAll('.quick-ask').forEach(btn => {
-            btn.addEventListener('click', () => {
-                chatInput.value = btn.innerText;
-                chatForm.dispatchEvent(new Event('submit'));
-            });
+            // ICI : Envoyer le message au webhook n8n
+            console.log("Message à envoyer à n8n :", text);
         });
 
         function addMessage(text, sender) {
@@ -149,7 +115,7 @@
                 <div class="${contentClass} shadow-xl">
                     <p class="text-sm leading-relaxed">${text}</p>
                 </div>
-                <span class="text-[10px] uppercase font-bold text-white/30 mt-2 ${sender === 'user' ? 'mr-4' : 'ml-4'}">${sender === 'user' ? 'Vous' : 'IA ARAD'} • À l'instant</span>
+                <span class="text-[10px] uppercase font-bold text-white/30 mt-2 ${sender === 'user' ? 'mr-4' : 'ml-4'}">${sender === 'user' ? 'Vous' : 'IA ARAD'}</span>
             `;
 
             chatMessages.appendChild(div);
