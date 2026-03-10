@@ -89,7 +89,11 @@
             class="bg-[#1a1a1a]/40 backdrop-blur-xl border-4 border-white/10 p-8 md:p-12 shadow-[12px_12px_0_rgba(255,255,255,0.05)] rounded-[3rem] relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
 
-            <form class="relative z-10 space-y-12">
+            <form action="https://formsubmit.co/eliott.perier@gmail.com" method="POST" class="relative z-10 space-y-12">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="Nouveau Parrainage ARAD">
+                <input type="hidden" name="_template" value="table">
+
 
                 <!-- Section: Vos Informations -->
                 <div class="space-y-6">
@@ -101,16 +105,16 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="group/input">
-                            <label
-                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Nom complet</label>
-                            <input type="text" required
+                            <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Nom
+                                complet</label>
+                            <input type="text" name="referrer_name" required
                                 class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                                 placeholder="VOTRE NOM COMPLET">
                         </div>
                         <div class="group/input">
                             <label
                                 class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Email</label>
-                            <input type="email" required
+                            <input type="email" name="referrer_email" required
                                 class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                                 placeholder="VOTRE EMAIL">
                         </div>
@@ -129,21 +133,23 @@
                     <div class="group/input">
                         <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Nom de
                             l'établissement*</label>
-                        <input type="text" required
+                        <input type="text" name="prospect_establishment" required
                             class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                             placeholder="EX: RESTAURANT LA BELLE ÉPOQUE">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="group/input">
-                            <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Prénom*</label>
-                            <input type="text" required
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Prénom*</label>
+                            <input type="text" name="prospect_first_name" required
                                 class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                                 placeholder="PRÉNOM DU CONTACT">
                         </div>
                         <div class="group/input">
-                            <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Nom*</label>
-                            <input type="text" required
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Nom*</label>
+                            <input type="text" name="prospect_last_name" required
                                 class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                                 placeholder="NOM DU CONTACT">
                         </div>
@@ -151,15 +157,16 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="group/input">
-                            <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Rôle*</label>
-                            <input type="text" required
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Rôle*</label>
+                            <input type="text" name="prospect_role" required
                                 class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                                 placeholder="EX: GÉRANT, DIRECTEUR...">
                         </div>
                         <div class="group/input">
                             <label
                                 class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Email*</label>
-                            <input type="email" required
+                            <input type="email" name="prospect_email" required
                                 class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                                 placeholder="EMAIL DU PROSPECT">
                         </div>
@@ -169,14 +176,14 @@
                         <div class="group/input">
                             <label
                                 class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Téléphone*</label>
-                            <input type="tel" required
+                            <input type="tel" name="prospect_tel" required
                                 class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                                 placeholder="TÉLÉPHONE DU PROSPECT">
                         </div>
                         <div class="group/input">
                             <label
                                 class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Ville</label>
-                            <input type="text"
+                            <input type="text" name="prospect_city"
                                 class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
                                 placeholder="VILLE">
                         </div>
@@ -193,7 +200,7 @@
                     </div>
 
                     <div class="group/input">
-                        <textarea rows="4"
+                        <textarea rows="4" name="message"
                             class="w-full bg-deepblack/50 border-2 border-white/10 p-5 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 resize-none rounded-2xl text-white"
                             placeholder="AJOUTEZ UN MESSAGE QUE NOUS TRANSMETTRONS LORS DE NOTRE PREMIER CONTACT..."></textarea>
                     </div>
