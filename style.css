@@ -1,0 +1,587 @@
+/* Base Reset and Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+@font-face {
+    font-family: 'Roca One';
+    src: local('Roca One'), local('RocaOne-Regular');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Roca One', 'Abril Fatface', serif;
+    overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Lenis Recommended CSS */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+/* Marquee Animation */
+.marquee {
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-33.33%);
+    }
+}
+
+
+
+.nav-link--active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Standardized Premium Button (Liquid Glow) */
+.btn-3d-nav,
+.btn-neo-premium,
+#footer-contact a,
+#contact-form button[type="button"] {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    isolation: isolate;
+    /* Create new stacking context */
+}
+
+/* Common Hover State */
+.btn-3d-nav:hover,
+.btn-neo-premium:hover,
+#footer-contact a:hover,
+#contact-form button[type="button"]:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+    color: #121212 !important;
+}
+
+/* Liquid Glow Layer */
+.btn-3d-nav::before,
+.btn-neo-premium::before,
+#footer-contact a::before,
+#contact-form button[type="button"]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+.btn-3d-nav:hover::before,
+.btn-neo-premium:hover::before,
+#footer-contact a:hover::before,
+#contact-form button[type="button"]:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Nav Specific Glow */
+.btn-3d-nav {
+    box-shadow: 0 4px 0px 0px rgba(255, 255, 255, 0.5), 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn-3d-nav:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.btn-3d-nav:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px 0px rgba(255, 255, 255, 0.5);
+}
+
+
+/* Logo in Main Title */
+.main-title-arad {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-title-container {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-top: -0.05em;
+    /* Fine-tune vertical alignment with font cap-height */
+}
+
+.char {
+    display: inline-block;
+}
+
+/* --- Circadian Cycle & Antigravity Styles --- */
+@layer base {
+    .hidden {
+        display: none;
+    }
+
+    .pointer-events-none {
+        pointer-events: none !important;
+    }
+}
+
+:root {
+    --sun-color: #FFFFFF;
+    --moon-color: #C0C0C0;
+    --brain-color: #E0E0E0;
+    --sun-halo: rgba(255, 255, 255, 0.4);
+    --moon-halo: rgba(192, 192, 192, 0.4);
+    --brain-halo: rgba(224, 224, 224, 0.4);
+    --title-gradient: linear-gradient(90deg, #FFFFFF, #C0C0C0, #808080);
+    --title-stroke: #C0C0C0;
+    --title-shadow: rgba(255, 255, 255, 0.3);
+    --accent-color: #FFFFFF;
+    --neon-glow: 0 0 15px rgba(255, 255, 255, 0.2);
+
+}
+
+body.cursor-is-moon {
+    --title-gradient: linear-gradient(90deg, #FFFFFF, #E0E0E0, #A0A0A0);
+    --title-stroke: #E0E0E0;
+    --title-shadow: rgba(224, 224, 224, 0.8);
+    --accent-color: var(--moon-color);
+}
+
+.btn-neo-premium {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 4px 4px 0px 0px #FFFFFF;
+}
+
+.btn-neo-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 0px 0px #FFFFFF;
+}
+
+.btn-neo-premium:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0px 0px #FFFFFF;
+}
+
+.section-title {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: default;
+}
+
+.section-title:hover {
+    background: linear-gradient(90deg, #FFFFFF, #FFFFFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateY(-5px);
+}
+
+
+.levitate {
+    animation: levitate 5s ease-in-out infinite;
+}
+
+@keyframes levitate {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.section-title {
+    color: var(--sun-color);
+    -webkit-text-stroke: 1.5px #121212;
+    text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.5);
+    transition: color 0.8s ease, text-shadow 0.8s ease, -webkit-text-stroke 0.8s ease;
+}
+
+#sun-body {
+    filter: drop-shadow(0 0 50px #FFFFFF) drop-shadow(0 0 100px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 180px rgba(255, 255, 255, 0.2));
+}
+
+#moon-body {
+    background-color: #1a1a1a;
+    border: 2px solid #E0E0E0;
+    filter: drop-shadow(0 0 50px #E0E0E0);
+}
+
+#main-arad-title {
+    font-family: 'Syne', sans-serif;
+    color: white;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    background: var(--title-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 50px var(--title-shadow));
+    transition: all 0.8s ease;
+    letter-spacing: -0.02em;
+}
+
+/* Main Hero Title Refining */
+.main-title-arad {
+    font-family: 'EB Garamond', serif !important;
+    font-weight: 500;
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.15));
+    letter-spacing: 0.05em;
+    text-transform: none;
+    /* Let the font breathe, could be uppercase or lowercase depending on HTML */
+}
+
+.main-title-arad span {
+    transition: all 0.5s ease;
+}
+
+.main-title-arad:hover {
+    filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.5));
+}
+
+/* Active Nav Link Highlight */
+.active-nav-link {
+    border-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure the CTA button remains readable even if it gets the active class */
+.btn-3d-nav.active-nav-link {
+    color: #121212 !important;
+    border-color: #00D4FF !important;
+    /* Keep the cyansun color or use a darker one */
+}
+
+/* Spline Animation Base Scaling */
+hana-viewer {
+    transform: scale(1);
+    transform-origin: center center;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Tablet Scaling (768px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    hana-viewer {
+        transform: scale(1.2);
+    }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE ADAPTATION (MAX-WIDTH: 768PX)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* 1. Typography Scaling (-35%) */
+    h1,
+    .hero-text {
+        font-size: clamp(2rem, 10vw, 3rem) !important;
+    }
+
+    h2.section-title,
+    h2.hero-text {
+        font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
+        line-height: 1.1 !important;
+    }
+
+    /* 2. Layout & Container Safety */
+    html,
+    body {
+        overflow-x: hidden !important;
+        position: relative;
+        width: 100% !important;
+    }
+
+    section,
+    .container,
+    .section,
+    #cta-final {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        margin-bottom: 40px !important;
+        max-width: 100vw !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        /* Strip all horizontal-growing shadows */
+    }
+
+    nav {
+        width: 90% !important;
+        /* Slightly narrower to be safe */
+        box-shadow: none !important;
+        max-width: 90vw !important;
+        padding-top: 0.5rem !important; /* Exactly 30% reduction from 0.75rem (py-3) */
+        padding-bottom: 0.5rem !important;
+        display: flex !important;
+        align-items: center !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+    }
+
+    #arad-logo {
+        margin-bottom: 0 !important; /* Ensure no bottom margin pushes it away from center */
+    }
+
+    /* 2.5 Hero Specific Mobile Optimizations */
+    #hero {
+        padding-top: 2rem !important; /* Remonter le contenu encore plus */
+    }
+
+    .hero-subtitle {
+        font-weight: 900 !important; /* Augmenter la graisse */
+        line-height: 1.4 !important; /* Ajuster l'interligne */
+        margin-bottom: 1rem !important; /* Harmoniser les marges - réduit pour compacter */
+    }
+
+    hana-viewer {
+        transform: scale(1.5) !important; /* Zoom focus for mobile */
+        transform-origin: center center;
+    }
+
+    .hero-cta {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%) !important; /* Dégradé plus subtil/argenté */
+        border: none !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3) !important;
+        padding: 1.1rem 2rem !important; /* Padding ajusté pour une seule ligne */
+        font-size: 1.1rem !important; /* Taille légèrement réduite */
+        white-space: nowrap !important; /* Forcer une seule ligne */
+        position: relative;
+    }
+
+    /* Hitbox tactile augmentée */
+    .hero-cta::after {
+        content: '';
+        position: absolute;
+        inset: -10px;
+        pointer-events: auto;
+    }
+
+    * {
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+        margin-inline: 0 !important;
+        /* Strict removal of lateral margins */
+    }
+
+    /* 3. Horizontal Scroll Carousels & Testimonials */
+    #solution .grid,
+    #equipe .grid,
+    #pourquoi .grid,
+    #histoire .grid,
+    #temoignages .grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        /* Force single line */
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 20px !important;
+        padding-bottom: 30px !important;
+        padding-top: 10px !important;
+        padding-left: 20px !important;
+        /* Peek Effect Padding */
+        padding-right: 40px !important;
+        /* Safe End Scroll */
+        margin-left: -20px !important;
+        /* Offset section padding to allow edge-to-edge scroll */
+        margin-right: -20px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    }
+
+    #solution .grid::-webkit-scrollbar,
+    #equipe .grid::-webkit-scrollbar,
+    #temoignages .grid::-webkit-scrollbar {
+        display: block;
+        height: 3px;
+    }
+
+    #solution .grid::-webkit-scrollbar-thumb,
+    #equipe .grid::-webkit-scrollbar-thumb,
+    #temoignages .grid::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+    }
+
+    /* Cards min-width & snapping */
+    #solution article,
+    #equipe .group,
+    #pourquoi .grid > div,
+    #histoire .grid > article,
+    #temoignages .grid>div {
+        flex: 0 0 85vw !important;
+        /* Peek Effect: Reduce width to 85vw */
+        width: 85vw !important;
+        min-width: 85vw !important;
+        scroll-snap-align: start !important;
+        /* Align to the left (after padding) */
+        margin: 0 !important;
+        overflow: hidden !important;
+        height: auto !important;
+        transform: none !important;
+        /* Disable all rotations/stacking for mobile */
+        box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.1) !important;
+        /* Unified mobile shadow */
+    }
+
+    /* 4. Vertical Grids & Social Stacking */
+    #stats .grid,
+    #process .grid,
+    #etudes .grid,
+    #contact-form .flex-col {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    #contact-form .flex-col a {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* 5. Image Optimizations (object-fit: cover) */
+    img {
+        object-fit: cover !important;
+    }
+
+    #solution img,
+    #projets img,
+    #etudes img,
+    #equipe img {
+        height: 250px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* 6. Navigation, Burger Menu & Logo */
+    #arad-logo {
+        transform: scale(0.65) !important;
+        transform-origin: left center !important;
+        margin-top: 5px !important; /* Adjusted for perfect alignment with burger */
+    }
+
+    #mobile-menu-btn {
+        margin-top: 2px !important;
+    }
+
+    #nav-links {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(18, 18, 18, 0.95) !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important; /* Center vertically */
+        gap: 40px !important; 
+        padding-top: 80px !important;
+        text-align: center !important;
+        z-index: -1 !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+    }
+
+    .nav-item {
+        letter-spacing: 2px !important;
+    }
+
+    .nav-cta {
+        background: white !important;
+        color: black !important;
+        padding: 1.1rem 2.5rem !important;
+        font-size: 1rem !important;
+        font-weight: bold !important;
+        font-family: 'Times New Roman', Times, serif !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3) !important;
+        width: 90% !important;
+        max-width: 300px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        border-radius: 50px !important;
+    }
+
+    /* 7. Button Uniformity (Width 100% & Radius) */
+    .btn-neo-premium,
+    #footer-contact a,
+    .bg-white.text-deepblack,
+    button[type="button"],
+    #contact-form .flex-col a {
+        width: 90% !important;
+        /* Prevent edge touching */
+        max-width: 400px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        border-radius: 50px !important;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        min-height: 54px !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        /* Remove shadows that might overflow */
+    }
+
+    #nav-links a.rounded-full {
+        border-radius: 50px !important;
+    }
+
+
+
+    /* 8. Disable Hovers for Touch */
+    @media (hover: none) {
+
+        .group:hover img,
+        .magnetic {
+            transform: none !important;
+            transition: none !important;
+        }
+
+        .reveal-card:hover,
+        #equipe .group:hover {
+            transform: none !important;
+        }
+    }
+}

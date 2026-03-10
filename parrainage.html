@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parrainage ARAD | Recommandez et Économisez</title>
+    <meta name="description" content="Recommandez ARAD à un hôtel ou restaurant et bénéficiez de -20% pendant 6 mois !">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="new-logo.png">
+    <link rel="apple-touch-icon" href="new-logo.png">
+    <meta name="theme-color" content="#121212">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Unbounded:wght@900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepblack: '#121212',
+                        sunset: '#E0E0E0',
+                        cyansun: '#D4D4D4',
+                        deeppurple: '#FFFFFF'
+                    },
+                    fontFamily: {
+                        roca: ['"Roca One"', 'serif', 'sans-serif'],
+                        outfit: ['"Outfit"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'neo': '8px 8px 0px 0px #FFFFFF',
+                        'neo-hover': '12px 12px 0px 0px #FFFFFF',
+                        'neo-card': '8px 8px 0px 0px #C0C0C0'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-deepblack text-white font-roca overflow-x-hidden selection:bg-cyansun selection:text-white pb-20 relative z-0">
+
+    <!-- Noise Overlay -->
+    <div class="fixed inset-0 z-[9998] opacity-[0.04] pointer-events-none noise-bg"></div>
+
+    <!-- Immersive Background -->
+    <div class="fixed inset-0 z-[-1] bg-black pointer-events-none overflow-hidden" id="circadian-bg">
+        <canvas id="neural-canvas" class="absolute inset-0 z-10 opacity-30 pointer-events-none"></canvas>
+    </div>
+
+    <!-- Navbar -->
+    <nav
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-deepblack/60 backdrop-blur-xl border-[3px] border-white shadow-[0_0_20px_rgba(255,255,255,0.1)] px-6 py-3 flex items-center justify-between gap-8 rounded-full transition-all duration-300 w-[95%] md:w-auto">
+        <a href="index.html#hero" class="flex items-center group gap-3">
+            <div
+                class="w-8 h-8 rounded-full overflow-hidden border-2 border-cyansun group-hover:border-white transition-all">
+                <img src="new-logo.png" alt="ARAD Logo" class="w-full h-full object-cover">
+            </div>
+            <span class="text-sm font-black tracking-widest text-cyansun group-hover:text-white transition-colors"
+                style="font-family: 'Unbounded', sans-serif;">ARAD</span>
+        </a>
+        <a href="index.html"
+            class="text-xs md:text-sm uppercase font-black tracking-[0.08em] hover:text-cyansun transition-colors">Retour
+            à l'accueil</a>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
+
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+            <div
+                class="inline-block bg-white text-deepblack p-4 md:p-8 border-4 border-white shadow-[8px_8px_0_rgba(255,255,255,0.2)] mb-8 transform -rotate-1">
+                <h1 class="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-none">
+                    FORMULAIRE DE PARRAINAGE ARAD
+                </h1>
+            </div>
+            <p class="text-xl md:text-3xl text-white font-black uppercase tracking-tight leading-snug">
+                Recommandez ARAD à un hôtel ou restaurant et <br class="hidden md:block">
+                bénéficiez de <span class="bg-white text-deepblack px-2">-20% pendant 6 mois !</span>
+            </p>
+        </div>
+
+
+        <!-- Referral Form -->
+        <div
+            class="bg-[#1a1a1a]/40 backdrop-blur-xl border-4 border-white/10 p-8 md:p-12 shadow-[12px_12px_0_rgba(255,255,255,0.05)] rounded-[3rem] relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+
+            <form class="relative z-10 space-y-12">
+
+                <!-- Section: Vos Informations -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-[2px] flex-grow bg-white/10"></div>
+                        <h2 class="text-white font-black uppercase tracking-widest text-sm">VOS INFORMATIONS</h2>
+                        <div class="h-[2px] flex-grow bg-white/10"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Nom complet</label>
+                            <input type="text" required
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="VOTRE NOM COMPLET">
+                        </div>
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Email</label>
+                            <input type="email" required
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="VOTRE EMAIL">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Informations du Prospect -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-[2px] flex-grow bg-white/10"></div>
+                        <h2 class="text-white font-black uppercase tracking-widest text-sm">INFORMATIONS DU PROSPECT
+                        </h2>
+                        <div class="h-[2px] flex-grow bg-white/10"></div>
+                    </div>
+
+                    <div class="group/input">
+                        <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Nom de
+                            l'établissement*</label>
+                        <input type="text" required
+                            class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                            placeholder="EX: RESTAURANT LA BELLE ÉPOQUE">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="group/input">
+                            <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Prénom*</label>
+                            <input type="text" required
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="PRÉNOM DU CONTACT">
+                        </div>
+                        <div class="group/input">
+                            <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Nom*</label>
+                            <input type="text" required
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="NOM DU CONTACT">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="group/input">
+                            <label class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Rôle*</label>
+                            <input type="text" required
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="EX: GÉRANT, DIRECTEUR...">
+                        </div>
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Email*</label>
+                            <input type="email" required
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="EMAIL DU PROSPECT">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Téléphone*</label>
+                            <input type="tel" required
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="TÉLÉPHONE DU PROSPECT">
+                        </div>
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2">Ville</label>
+                            <input type="text"
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="VILLE">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Message Personnel -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-[2px] flex-grow bg-white/10"></div>
+                        <h2 class="text-white font-black uppercase tracking-widest text-sm">MESSAGE PERSONNEL
+                            (OPTIONNEL)</h2>
+                        <div class="h-[2px] flex-grow bg-white/10"></div>
+                    </div>
+
+                    <div class="group/input">
+                        <textarea rows="4"
+                            class="w-full bg-deepblack/50 border-2 border-white/10 p-5 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 resize-none rounded-2xl text-white"
+                            placeholder="AJOUTEZ UN MESSAGE QUE NOUS TRANSMETTRONS LORS DE NOTRE PREMIER CONTACT..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Consent & Submit -->
+                <div class="space-y-8 pt-4">
+                    <label class="flex items-start gap-4 cursor-pointer group/check">
+                        <div class="relative mt-1">
+                            <input type="checkbox" required
+                                class="peer appearance-none w-6 h-6 border-2 border-white/20 rounded bg-deepblack/50 checked:bg-white checked:border-white transition-all cursor-pointer">
+                            <svg class="absolute top-1 left-1 w-4 h-4 text-deepblack opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <span
+                            class="text-gray-400 text-sm md:text-base font-bold select-none group-hover/check:text-white transition-colors">
+                            J'atteste que ce prospect a donné son accord pour être contacté par ARAD
+                        </span>
+                    </label>
+
+                    <button type="submit"
+                        class="w-full bg-white text-deepblack font-black text-xl py-6 uppercase border-4 border-white shadow-[8px_8px_0_rgba(255,255,255,0.2)] hover:shadow-[12px_12px_0_rgba(255,255,255,0.4)] hover:bg-transparent hover:text-white transition-all rounded-2xl group flex items-center justify-center gap-4 btn-neo-premium">
+                        Envoyer ma recommandation
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                            class="group-hover:translate-x-2 transition-transform">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+
+                    <p class="text-center text-gray-500 text-sm italic font-outfit">
+                        Une fois le nouveau client signé et son premier mois payé, nous activerons votre réduction de
+                        -20% pendant 6 mois.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Scripts (Cursor and Background effects) -->
+    <script src="app.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAD | Agence IA & Automatisation sur Mesure pour Entreprises</title>
+    <meta name="description"
+        content="ARAD automatise vos processus métiers et crée des agents IA sur mesure (Support, Réservation, Vente). Gagnez du temps et boostez votre rentabilité.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="new-logo.png">
+    <link rel="apple-touch-icon" href="new-logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#121212">
+    <meta name="msapplication-TileImage" content="new-logo.png">
+    <meta name="msapplication-TileColor" content="#121212">
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Outfit:wght@400;700;900&family=Space+Grotesk:wght@300;400;700&family=Syne:wght@800&family=Unbounded:wght@900&display=swap"
+        rel="stylesheet">
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.67/build/spline-viewer.js"></script>
+    <!-- Scripts -->
+
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepblack: '#121212',
+                        sunset: '#E0E0E0',
+                        sunsetlight: '#F5F5F5',
+                        sunsetyellow: '#FFFFFF',
+                        cyansun: '#D4D4D4',
+                        brain: '#FFFFFF',
+                        accent: '#FFFFFF'
+                    },
+                    fontFamily: {
+                        roca: ['"Roca One"', 'serif', 'sans-serif'],
+                        outfit: ['"Outfit"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'neo': '8px 8px 0px 0px #FFFFFF',
+                        'neo-hover': '12px 12px 0px 0px #FFFFFF',
+                        'neo-nav': '4px 4px 0px 0px #C0C0C0',
+                        'neo-card': '8px 8px 0px 0px #C0C0C0',
+                        'neo-brain': '8px 8px 0px 0px #FFFFFF'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-deepblack text-white font-roca overflow-x-hidden selection:bg-cyansun selection:text-white pb-20 relative z-0">
+
+    <!-- Custom Circadian Cursor -->
+    <div id="custom-cursor"
+        class="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 opacity-0">
+        <div id="cursor-core"
+            class="relative w-8 h-8 rounded-full border-2 border-white/50 bg-sunset flex items-center justify-center transition-all duration-500 shadow-2xl">
+            <span id="cursor-text"
+                class="text-[10px] font-bold text-deepblack opacity-0 transition-opacity duration-300 whitespace-nowrap"></span>
+        </div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="fixed inset-0 z-[9998] opacity-[0.04] pointer-events-none noise-bg"></div>
+
+    <!-- Immersive Circadian Background -->
+    <div class="fixed inset-0 z-[-1] bg-black pointer-events-none overflow-hidden" id="circadian-bg">
+        <!-- Neural Background Canvas -->
+        <canvas id="neural-canvas" class="absolute inset-0 z-10 opacity-40 pointer-events-none"></canvas>
+    </div>
+
+    <!-- Navbar Flottante -->
+    <nav
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] bg-deepblack/60 md:bg-deepblack/30 backdrop-blur-xl border-[3px] border-white shadow-[0_0_20px_rgba(255,255,255,0.1)] px-6 md:px-8 py-3 md:py-4 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 rounded-[2rem] md:rounded-full transition-all duration-300 w-[95%] md:w-auto max-w-7xl">
+
+        <div class="flex items-center justify-between w-full md:w-auto gap-4">
+            <!-- ARAD Logo -->
+            <a href="#hero" id="arad-logo" class="flex items-center group min-h-[44px] gap-3">
+                <div
+                    class="w-12 h-12 rounded-full overflow-hidden border-2 border-cyansun group-hover:border-white transition-all">
+                    <img src="new-logo.png" alt="ARAD Logo Icon" class="w-full h-full object-cover">
+                </div>
+                <span class="text-sm font-black tracking-widest text-cyansun group-hover:text-white transition-colors"
+                    style="font-family: 'Unbounded', sans-serif;">ARAD</span>
+            </a>
+
+            <!-- Mobile Menu Button (Top Right on Mobile) -->
+            <button id="mobile-menu-btn"
+                class="md:hidden flex flex-col justify-center items-center w-10 h-10 border border-white/20 rounded-full focus:outline-none min-h-[44px] hover:border-cyansun transition-colors ml-auto">
+                <span class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 mb-1.5 origin-center"
+                    id="mobile-bar-1"></span>
+                <span class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 origin-center"
+                    id="mobile-bar-2"></span>
+            </button>
+        </div>
+
+        <!-- Navigation Links (Dropdown on Mobile) -->
+        <div id="nav-links"
+            class="hidden md:flex flex-col md:flex-row w-full md:w-auto bg-transparent mt-2 md:mt-0 p-2 md:p-0 gap-y-4 md:gap-x-3 items-center text-xs md:text-sm uppercase font-black tracking-[0.08em] justify-center whitespace-nowrap">
+
+            <a href="#solution"
+                class="nav-item px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center active-nav-link">Solution</a>
+            <a href="#parrainage"
+                class="nav-item px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Offre</a>
+            <a href="#process"
+                class="nav-item px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Processus</a>
+            <a href="#pourquoi"
+                class="nav-item px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Pourquoi</a>
+            <a href="#histoire"
+                class="nav-item px-2 py-3 md:py-1.5 w-full md:w-auto text-center rounded-full border border-transparent transition-all hover:text-cyansun min-h-[44px] md:min-h-0 flex items-center justify-center">Qui
+                sommes nous ?</a>
+
+            <!-- Unified Start Button -->
+            <a href="#contact-form"
+                class="nav-cta bg-white text-black px-8 py-3 rounded-full font-bold uppercase transition-all duration-300 flex items-center justify-center shadow-lg hover:scale-105 whitespace-nowrap w-full md:w-auto md:ml-4"
+                style="font-family: 'Times New Roman', Times, serif;">
+                LANCEZ VOTRE PROJET
+            </a>
+        </div>
+
+    </nav>
+
+
+
+    <main>
+        <!-- Hero Section -->
+        <!-- Hero Section -->
+        <section id="hero"
+            class="relative w-full h-screen overflow-hidden flex items-center justify-between px-8 md:px-16 lg:px-24 pt-20 bg-black">
+
+            <!-- Spline Animation Background -->
+            <script type="module"
+                src="https://cdn.spline.design/@splinetool/hana-viewer@1.2.50/hana-viewer.js"></script>
+            <div class="absolute inset-0 w-full h-full pointer-events-auto z-0">
+                <hana-viewer class="w-full h-full"
+                    url="https://prod.spline.design/SftOXcPSQdmUSWTB-5Sq/scene.hanacode"></hana-viewer>
+            </div>
+
+            <!-- Center Text Content -->
+            <div
+                class="relative z-10 w-full text-center pointer-events-auto flex flex-col items-center justify-between h-full pt-8 pb-10 mx-auto">
+
+                <!-- Top content wrapper -->
+                <div class="flex flex-col items-center w-full mt-24 md:mt-12">
+                </div>
+
+                <div class="w-full flex flex-col items-center justify-center mt-auto pb-16">
+                    <p
+                        class="hero-subtitle text-white italic text-2xl md:text-4xl lg:text-5xl tracking-widest uppercase font-black drop-shadow-lg text-center">
+                        Automatisations IA pour hôtels et restaurants
+                    </p>
+                </div>
+            </div>
+
+            <!-- Smooth gradient transition to next section -->
+            <div
+                class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-deepblack pointer-events-none z-20">
+            </div>
+
+        </section>
+
+
+
+        <div class="w-full h-px bg-white/20"></div>
+
+        <!-- Pillar 3: Nos créations -->
+        <section id="solution" class="py-16 md:py-24 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
+            <h2 class="text-[clamp(2.5rem,6vw,5rem)] font-black mb-6 uppercase text-center section-title leading-tight">
+                NOS SOLUTIONS IA</h2>
+            <div class="flex justify-center mb-16 flex-col items-center gap-4">
+                <!-- Banner 1: Offre de lancement -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-white/10 blur-sm opacity-30 animate-pulse rounded-lg"></div>
+                    <div
+                        class="relative bg-deepblack text-white px-8 py-3 font-black uppercase tracking-widest text-sm md:text-base border-[3px] border-white/40 shadow-[8px_8px_0_rgba(255,255,255,0.1)] reveal-up transform -rotate-1 hover:rotate-0 transition-all duration-300 pointer-events-auto">
+                        ✨ OFFRE DE LANCEMENT : JUSQU'À -60% POUR LES 5 PREMIERS CLIENTS ✨
+                    </div>
+                </div>
+                <!-- Banner 2: Mise en place offerte -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-white/5 blur-sm opacity-20 animate-pulse rounded-lg"></div>
+                    <div
+                        class="relative bg-deepblack text-white px-6 py-2 font-black uppercase tracking-widest text-xs md:text-sm border-2 border-white/20 shadow-[4px_4px_0_rgba(255,255,255,0.05)] reveal-up transform rotate-1 hover:rotate-0 transition-all duration-300 pointer-events-auto">
+                        ✨ + MISE EN PLACE OFFERTE ✨
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Agent 1: Assistant Vocal -->
+                <article
+                    class="group relative bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo transition-all duration-500 reveal-card rounded-[2.5rem] overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-80 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                            <img src="icone-assitant-vocal.png" alt="Assistant Vocal IA haute fidélité - ARAD"
+                                loading="lazy" decoding="async" width="800" height="600"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <h3 class="text-4xl font-black mb-2 uppercase">Assistant Vocal</h3>
+                        <div class="mb-4 flex items-center gap-3">
+                            <span class="text-gray-500 text-xl line-through">799€</span>
+                            <span class="text-3xl font-black text-white">399€</span>
+                            <span class="text-gray-400 text-lg">/mois</span>
+                        </div>
+                        <div
+                            class="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-6 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full inline-block">
+                            Mise en place : 499€ → <span class="text-white">OFFERT</span>
+                        </div>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            <span class="text-white font-bold block mb-2">Humanisez votre Relation Client.</span>
+                            Donnez une voix unique à votre marque avec nos agents IA haute fidélité. Automatisez sans
+                            perdre l'émotion.
+                        </p>
+                        <button
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase rounded-full hover:bg-white hover:text-deepblack transition-all magnetic">
+                            découvrir
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Agent 2: Agent FAQ -->
+                <article
+                    class="group relative bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo transition-all duration-500 reveal-card rounded-[2.5rem] overflow-hidden md:translate-y-8">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-80 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                            <img src="icone-agent-faq.png" alt="Chatbot de Support FAQ boosté par l'IA - ARAD"
+                                loading="lazy" decoding="async" width="800" height="600"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <h3 class="text-4xl font-black mb-2 uppercase">Agent FAQ</h3>
+                        <div class="mb-4 flex items-center gap-3">
+                            <span class="text-gray-500 text-xl line-through">499€</span>
+                            <span class="text-3xl font-black text-white">199€</span>
+                            <span class="text-gray-400 text-lg">/mois</span>
+                        </div>
+                        <div
+                            class="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-6 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full inline-block">
+                            Mise en place : 499€ → <span class="text-white">OFFERT</span>
+                        </div>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            Support client 24/7. Résolvez les questions complexes instantanément grâce à notre IA
+                            entrainée sur vos données.
+                        </p>
+                        <button
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase rounded-full hover:bg-white hover:text-deepblack transition-all magnetic">
+                            découvrir
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Agent 3: IA Réservation Hôtel -->
+                <article
+                    class="group relative bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo transition-all duration-500 reveal-card rounded-[2.5rem] overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-80 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                            <img src="icone-agent-réservations.png"
+                                alt="Agent d'automatisation de réservation d'hôtels - ARAD" loading="lazy"
+                                decoding="async" width="800" height="600"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <h3 class="text-4xl font-black mb-2 uppercase">Réservation d'Hôtels</h3>
+                        <div class="mb-4 flex items-center gap-3">
+                            <span class="text-gray-500 text-xl line-through">799€</span>
+                            <span class="text-3xl font-black text-white">399€</span>
+                            <span class="text-gray-400 text-lg">/mois</span>
+                        </div>
+                        <div
+                            class="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-6 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full inline-block">
+                            Mise en place : 499€ → <span class="text-white">OFFERT</span>
+                        </div>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            Automatisez la gestion de vos agendas, répondez aux questions des clients et maximisez votre
+                            taux de remplissage 24h/24.
+                        </p>
+                        <button
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase rounded-full hover:bg-white hover:text-deepblack transition-all magnetic">
+                            découvrir
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Agent 4: IA Avis Google -->
+                <article
+                    class="group relative bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo transition-all duration-500 reveal-card rounded-[2.5rem] overflow-hidden md:translate-y-8">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-80 overflow-hidden rounded-2xl mb-8 border-2 border-white/5">
+                            <img src="icone-agent-avis.png"
+                                alt="Intelligence Artificielle de gestion des avis Google - ARAD" loading="lazy"
+                                decoding="async" width="800" height="600"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <h3 class="text-4xl font-black mb-2 uppercase">Réponse aux Avis</h3>
+                        <div class="mb-4 flex items-center gap-3">
+                            <span class="text-gray-500 text-xl line-through">499€</span>
+                            <span class="text-3xl font-black text-white">199€</span>
+                            <span class="text-gray-400 text-lg">/mois</span>
+                        </div>
+                        <div
+                            class="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-6 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full inline-block">
+                            Mise en place : 499€ → <span class="text-white">OFFERT</span>
+                        </div>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            Une IA dédiée pour répondre automatiquement et de manière hyper-personnalisée à vos avis
+                            Google. Optimisez votre e-réputation sans effort.
+                        </p>
+                        <button
+                            class="bg-white text-deepblack px-8 py-4 font-bold uppercase rounded-full hover:bg-white hover:text-deepblack transition-all magnetic">
+                            découvrir
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+        <div class="w-full h-px bg-white/20"></div>
+
+        <!-- Programme de Parrainage Section -->
+        <section id="parrainage" class="py-16 md:py-24 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto mt-20">
+            <h2
+                class="text-[clamp(2.5rem,6vw,5rem)] font-black mb-12 md:mb-16 uppercase text-center section-title leading-tight">
+                NOTRE OFFRE</h2>
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+                <!-- Illustration Side: Referral Images -->
+                <div class="w-full lg:w-1/2 flex flex-col items-center gap-8 reveal-up">
+                    <!-- Image 1 -->
+                    <div
+                        class="max-w-md w-full rounded-[3rem] overflow-hidden border-4 border-white/10 shadow-[20px_20px_0_rgba(255,255,255,0.05)] bg-[#1a1a1a]/40 backdrop-blur-xl p-2 transform -rotate-1 hover:rotate-0 transition-all duration-500 group">
+                        <img src="Image-parraignage.png" alt="Parrainage ARAD -20% - Etape 1"
+                            class="w-full h-auto rounded-[2.5rem] opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <!-- Image 2 -->
+                    <div
+                        class="max-w-md w-full rounded-[3rem] overflow-hidden border-4 border-white/10 shadow-[20px_20px_0_rgba(255,255,255,0.05)] bg-[#1a1a1a]/40 backdrop-blur-xl p-2 transform rotate-1 hover:rotate-0 transition-all duration-500 group">
+                        <img src="image-parraignage2.png" alt="Parrainage ARAD -20% - Etape 2"
+                            class="w-full h-auto rounded-[2.5rem] opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="w-full lg:w-1/2 reveal-up">
+                    <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-black uppercase leading-tight section-title mb-6">
+                        Le Programme de Parrainage</h2>
+                    <p class="text-sm text-gray-500 uppercase tracking-[0.2em] font-bold mb-2">Votre réduction :</p>
+                    <div class="mb-6">
+                        <span class="text-6xl md:text-7xl font-black text-white">-20%</span>
+                        <span class="text-gray-400 text-2xl ml-2">/ mois pendant 6 mois</span>
+                    </div>
+                    <p class="text-white font-bold text-xl mb-4">Gagnez sur votre abonnement.</p>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-10">
+                        Recevez une réduction de 20% sur votre abonnement mensuel pendant 6 mois pour chaque nouveau
+                        client que vous parrainez et qui s'abonne à une offre.
+                    </p>
+                    <a href="parrainage.html"
+                        class="inline-block bg-white text-deepblack px-6 py-3 rounded-full font-black uppercase text-sm border-4 border-white/20 shadow-neo hover:shadow-neo-hover transition-all duration-500 btn-neo-premium">
+                        Parrainer maintenant
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+        <div class="w-full h-px bg-white/20"></div>
+
+        <!-- Process Section -->
+        <section id="process" class="py-16 md:py-24 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
+            <h2
+                class="text-[clamp(2.5rem,6vw,5rem)] font-black mb-12 md:mb-16 uppercase text-center section-title leading-tight">
+                MÉTHODOLOGIE D'INTÉGRATION IA</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 process-grid">
+                <!-- Step 01 -->
+                <div
+                    class="relative p-8 bg-deepblack border-2 border-white/10 rounded-[2.5rem] reveal-card group transition-all duration-500 process-card cursor-pointer">
+                    <span
+                        class="absolute -top-10 -left-4 text-9xl font-black opacity-10 text-white transition-all group-hover:opacity-40 outline-text"
+                        style="-webkit-text-stroke: 2px white; color: transparent;">01</span>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-black text-white uppercase mb-4">Analyse</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed">
+                            Nous échangeons avec vous pour comprendre votre fonctionnement et identifier les tâches que
+                            l'IA peut automatiser.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 02 -->
+                <div
+                    class="relative p-8 bg-deepblack border-2 border-white/10 rounded-[2.5rem] reveal-card group transition-all duration-500 process-card cursor-pointer">
+                    <span
+                        class="absolute -top-10 -left-4 text-9xl font-black opacity-10 text-white transition-all group-hover:opacity-40 outline-text"
+                        style="-webkit-text-stroke: 2px white; color: transparent;">02</span>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-black text-white uppercase mb-4">Conception</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed">
+                            Nous créons des agents IA sur-mesure pour automatiser les tâches répétitives de votre
+                            entreprise.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 03 -->
+                <div
+                    class="relative p-8 bg-deepblack border-2 border-white/10 rounded-[2.5rem] reveal-card group transition-all duration-500 process-card cursor-pointer">
+                    <span
+                        class="absolute -top-10 -left-4 text-9xl font-black opacity-10 text-white transition-all group-hover:opacity-40 outline-text"
+                        style="-webkit-text-stroke: 2px white; color: transparent;">03</span>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-black text-white uppercase mb-4">Suivi</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed">
+                            Nous restons disponibles pour ajuster votre solution et nous assurons qu'elle fonctionne de
+                            manière optimale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Marquee (Moved under Processus) -->
+
+        <!-- AI Agents Showcase Section -->
+
+        <div class="w-full h-px bg-white/20"></div>
+
+        <!-- Pourquoi nous Section -->
+        <section id="pourquoi" class="py-16 md:py-24 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
+            <h2
+                class="text-[clamp(2.5rem,6vw,5rem)] font-black mb-12 md:mb-16 uppercase text-center section-title leading-tight">
+                POURQUOI CHOISIR NOTRE AGENCE IA ?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-fr">
+                <!-- Pillar 1: Jeunes et passionnés -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo transition-all duration-500 reveal-card rounded-[2.5rem] flex flex-row items-start gap-6">
+                    <div class="flex-shrink-0 p-5 bg-white/5 rounded-2xl border-2 border-white/10">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-1 text-white">Jeunes et Passionnés</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-widest mb-3">Notre force : la maîtrise des
+                            nouvelles technologies</p>
+                        <p class="text-gray-400 font-medium">Nous sommes 4 passionnés de 14 ans qui créons des agents IA
+                            pour les hôtels et restaurants. Nous maîtrisons les outils d'automatisation dernière
+                            génération
+                            et parlons votre langue, sans jargon technique incompréhensible.</p>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Ultra-réactifs -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo transition-all duration-500 reveal-card rounded-[2.5rem] flex flex-row items-start gap-6">
+                    <div class="flex-shrink-0 p-5 bg-white/5 rounded-2xl border-2 border-white/10">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-1 text-white">Ultra-Réactifs</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-widest mb-3">Réponse en moins de 24h</p>
+                        <p class="text-gray-400 font-medium">Nous sommes ultra-réactifs avec des réponses en moins de
+                            24h.
+                            Notre jeunesse est notre force : nous apprenons vite et nous adaptons encore plus vite à vos
+                            besoins spécifiques.</p>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Tarifs accessibles -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo transition-all duration-500 reveal-card rounded-[2.5rem] flex flex-row items-start gap-6">
+                    <div class="flex-shrink-0 p-5 bg-white/5 rounded-2xl border-2 border-white/10">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-1 text-white">Tarifs Accessibles</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-widest mb-3">Qualité pro sans vous ruiner</p>
+                        <p class="text-gray-400 font-medium">Nos tarifs sont accessibles car nous voulons d'abord
+                            construire
+                            notre réputation. Nous cherchons nos 3 premiers clients pour valider nos solutions et
+                            prouver
+                            notre valeur concrète.</p>
+                    </div>
+                </div>
+
+                <!-- Pillar 4: Engagement total -->
+                <div
+                    class="bg-[#1a1a1a]/40 backdrop-blur-md border-4 border-white/10 p-8 shadow-neo-nav hover:shadow-neo transition-all duration-500 reveal-card rounded-[2.5rem] flex flex-row items-start gap-6">
+                    <div class="flex-shrink-0 p-5 bg-white/5 rounded-2xl border-2 border-white/10">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-1 text-white">Engagement Total</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-widest mb-3">On met les bouchées doubles</p>
+                        <p class="text-gray-400 font-medium">Si vous nous donnez une chance, nous mettrons les bouchées
+                            doubles. Pas de promesses en l'air - juste du travail concret, de la motivation à revendre,
+                            et
+                            un accompagnement continu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Scroll Indicator -->
+            <div class="flex md:hidden justify-center gap-2 mt-4">
+                <div class="w-12 h-1 bg-white/40 rounded-full overflow-hidden">
+                    <div id="pourquoi-scroll-progress" class="w-1/4 h-full bg-white transition-all duration-300"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="w-full h-px bg-white/20"></div>
+
+        <!-- Qui Sommes Nous Section (Merged History & Team) -->
+        <section id="histoire" class="py-24 px-6 md:px-12 max-w-7xl mx-auto mt-20">
+            <div class="w-full flex justify-center mb-16">
+                <h2
+                    class="text-6xl md:text-8xl font-black uppercase text-center section-title reveal-up whitespace-nowrap">
+                    QUI SOMMES NOUS ?</h2>
+            </div>
+
+            <!-- Team Members -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+                <!-- Member 1 -->
+                <article
+                    class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-white/40 transition-all duration-500 reveal-card text-center group rounded-[2.5rem] relative overflow-hidden flex flex-col items-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="h-32 w-32 mx-auto bg-deepblack rounded-full mb-6 border-4 border-white/10 overflow-hidden relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-gray-500 to-deepblack opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-6xl font-black text-white mix-blend-overlay">A</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase mb-1">Antonin<br>Dubrulle</h3>
+                        <p class="text-cyansun font-bold uppercase text-[10px] tracking-widest">design et présence web
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Member 2 -->
+                <article
+                    class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-white/40 transition-all duration-500 reveal-card text-center group md:translate-y-8 rounded-[2.5rem] relative overflow-hidden flex flex-col items-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <div class="relative z-10 w-full">
+                        <div
+                            class="h-32 w-32 mx-auto bg-white rounded-full mb-6 border-4 border-white/10 overflow-hidden relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-gray-300 to-white opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-6xl font-black text-deepblack mix-blend-overlay">E</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase mb-1">Eliott<br>Perier</h3>
+                        <p class="text-cyansun font-bold uppercase text-[10px] tracking-widest">vision et cap</p>
+                    </div>
+                </article>
+
+                <!-- Member 3 -->
+                <article
+                    class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-white/40 transition-all duration-500 reveal-card text-center group rounded-[2.5rem] relative overflow-hidden flex flex-col items-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="h-32 w-32 mx-auto bg-deepblack rounded-full mb-6 border-4 border-white/10 overflow-hidden relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-gray-500 to-deepblack opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-6xl font-black text-white mix-blend-overlay">E</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase mb-1">Eliott<br>Dubrulle</h3>
+                        <p class="text-cyansun font-bold uppercase text-[10px] tracking-widest">maintien et suivi</p>
+                    </div>
+                </article>
+
+                <!-- Member 4 -->
+                <article
+                    class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:border-white/40 transition-all duration-500 reveal-card text-center group md:translate-y-8 rounded-[2.5rem] relative overflow-hidden flex flex-col items-center">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+                    <div class="relative z-10 w-full">
+                        <div
+                            class="h-32 w-32 mx-auto bg-white rounded-full mb-6 border-4 border-white/10 overflow-hidden relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-gray-300 to-white opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <span
+                                class="absolute inset-0 flex items-center justify-center text-6xl font-black text-deepblack mix-blend-overlay">M</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-white uppercase mb-1">Mathys<br>Mien</h3>
+                        <p class="text-cyansun font-bold uppercase text-[10px] tracking-widest">technique et innovation
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Mobile Scroll Indicator -->
+            <div class="flex md:hidden justify-center gap-2 mt-4 mb-12">
+                <div class="w-12 h-1 bg-white/40 rounded-full overflow-hidden">
+                    <div id="equipe-scroll-progress" class="w-1/4 h-full bg-white transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center reveal-up col-span-full mb-20">
+                <p class="text-lg md:text-xl text-gray-300 font-medium max-w-3xl mx-auto leading-relaxed font-outfit">
+                    Nous avons 14 ans. Nous créons des agents IA. <br class="hidden md:block">
+                    Notre jeunesse est notre force : on apprend vite, on s'adapte encore plus vite.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-up">
+                    <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                        <p>
+                            Tout a débuté en Mars 2025 dans les couloirs de notre petit collège charentais, grâce à une
+                            volonté qui nous était commune : Créer quelque chose ayant un impact réellement bénéfique
+                            pour nous, et pour les personnes destinées à utiliser nos services. On ne voulait pas juste
+                            un "petit job" ou encore un business sans éthique, qu'on ne serait même pas fier de
+                            présenter à nos propres parents. On voulait monter une vraie boîte. Quelque chose qui aide
+                            les gens, qui a du sens, et qui est voué à prospérer dans le temps.
+                        </p>
+                        <p>
+                            Pendant des mois, on a testé plein d'idées. Des applications mobiles, du dropshipping, du
+                            coaching... Rien ne collait.
+                        </p>
+                        <p>
+                            Puis durant l’été 2025, nous avons entendu parler de l'IA. Les agents conversationnels,
+                            l'automatisation, les chatbots. On a passé nos week-ends à apprendre et à créer grâce à
+                            Google AI Studio, N8N, Claude, Gemini... On a alors eu l'idée de créer ARAD, le fruit d'une
+                            ambition partagée par quatre adolescents déterminés à profiter de leurs jeunesses avec
+                            l’objectif de créer quelque-chose de réellement utile. Tout cela en tenant à accomplir un
+                            objectif : Rendre l'automatisation de la logistique des restaurants et hôtels accessible
+                            grâce à l’IA.
+                        </p>
+                        <p class="font-bold text-white italic">
+                            « Créer est accesible à tout âge, innover ne requiert aucun diplôme. »
+                        </p>
+                    </div>
+                </div>
+                <div class="relative reveal-card">
+
+
+                    <div
+                        class="bg-white/5 backdrop-blur-2xl border-2 border-white/20 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] rounded-[3rem] rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <img src="image.png" alt="L'équipe au travail" loading="lazy" decoding="async" width="800"
+                            height="400"
+                            class="w-full h-[400px] object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                        <div
+                            class="absolute -bottom-6 -right-6 bg-white text-deepblack font-black px-6 py-4 border-2 border-white/20 shadow-xl rounded-2xl -rotate-6">
+                            DEPUIS 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <div class="w-full h-px bg-white/20"></div>
+
+        <!-- Redesigned Contact Section (Pillar 11 extended) -->
+        <section id="contact-form" class="py-32 px-6 md:px-12 max-w-7xl mx-auto mt-20">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-white font-bold uppercase tracking-[0.3em] mb-4 block">Let's Create</span>
+                <h2 class="text-[clamp(2.5rem,6vw,5rem)] font-black uppercase leading-none section-title">
+                    Prêt à automatiser votre business ?
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-400 mt-8 max-w-2xl mx-auto leading-relaxed">
+                    Décrivez-nous votre projet et discutons ensemble de comment nos agents IA peuvent vous faire
+                    gagner du temps et de l'argent.
+                </p>
+            </div>
+
+            <div class="flex justify-center">
+                <!-- Neobrutalist Form -->
+                <div
+                    class="w-full max-w-3xl bg-[#1a1a1a]/40 backdrop-blur-xl border-4 border-white/10 p-10 shadow-[8px_8px_0_rgba(255,255,255,0.1)] reveal-card rounded-[3rem] relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none">
+                    </div>
+
+                    <form class="relative z-10 space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="group/input">
+                                <label
+                                    class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2 transition-colors group-focus-within/input:text-gray-300">Nom
+                                    complet*</label>
+                                <input type="text" required
+                                    class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                    placeholder="JEAN DUPONT">
+                            </div>
+                            <div class="group/input">
+                                <label
+                                    class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2 transition-colors group-focus-within/input:text-gray-300">Email*</label>
+                                <input type="email" required
+                                    class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                    placeholder="JEAN@RESTAURANT.COM">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="group/input">
+                                <label
+                                    class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2 transition-colors group-focus-within/input:text-gray-300">Téléphone</label>
+                                <input type="tel"
+                                    class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                    placeholder="06 12 34 56 78">
+                            </div>
+                            <div class="group/input">
+                                <label
+                                    class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2 transition-colors group-focus-within/input:text-gray-300">Votre
+                                    établissement*</label>
+                                <input type="text" required
+                                    class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                    placeholder="RESTAURANT, HÔTEL, ETC.">
+                            </div>
+                        </div>
+
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2 transition-colors group-focus-within/input:text-gray-300">Ville
+                                (optionnel)</label>
+                            <input type="text"
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 rounded-xl text-white"
+                                placeholder="PARIS">
+                        </div>
+
+                        <div class="group/input">
+                            <label
+                                class="block text-white font-bold uppercase tracking-widest text-[10px] mb-2 transition-colors group-focus-within/input:text-gray-300">Décrivez
+                                votre projet d'automatisation*</label>
+                            <textarea rows="4" required
+                                class="w-full bg-deepblack/50 border-2 border-white/10 p-4 font-bold focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all placeholder:text-gray-700 resize-none rounded-xl text-white"
+                                placeholder="EX: JE REÇOIS BEAUCOUP D'AVIS GOOGLE ET..."></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-white text-deepblack font-black text-xl py-6 uppercase border-4 border-white shadow-[8px_8px_0_rgba(255, 255, 255, 0.1)] hover:shadow-[12px_12px_0_rgba(255,255,255,0.4)] hover:bg-transparent hover:text-white transition-all rounded-2xl group flex items-center justify-center gap-4 btn-neo-premium mt-4">
+                            ENVOYER LE MESSAGE →
+                        </button>
+
+                        <!-- Phone Call Option -->
+                        <div class="text-center mt-12 pt-8 border-t border-white/10">
+                            <p class="text-gray-400 text-[10px] uppercase tracking-[0.2em] mb-4 font-bold">Vous préférez
+                                appeler ?</p>
+                            <div class="flex flex-col items-center gap-4">
+                                <a href="tel:+33767171539"
+                                    class="inline-flex items-center gap-3 text-white font-black text-2xl hover:text-cyansun transition-colors group">
+                                    <span class="text-3xl">📞</span>
+                                    07 67 17 15 39
+                                </a>
+                                <div
+                                    class="text-gray-500 text-[11px] font-bold uppercase tracking-wider leading-relaxed">
+                                    Disponibles du lundi au vendredi, 17h-21h<br>
+                                    et le weekend 9h-21h
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+        </footer>
+        <!-- Footer Section (Contact) -->
+        <section id="footer-contact" class="py-24 px-4 md:px-12 bg-white text-deepblack relative overflow-hidden">
+            <!-- Decorative Background Elements -->
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-cyansun/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-96 h-96 bg-cyansun/10 blur-3xl rounded-full -translate-x-1/2 translate-y-1/2">
+            </div>
+
+            <div class="max-w-5xl mx-auto relative z-10 text-center">
+                <span
+                    class="inline-block px-4 py-1 border-2 border-deepblack font-black uppercase tracking-widest text-xs mb-8">Contactez-nous</span>
+                <h2 class="text-[clamp(2.5rem,8vw,6rem)] font-black uppercase leading-none mb-8 tracking-tighter">PRÊT À
+                    AUTOMATISER VOTRE SUCCÈS ?</h2>
+                <p class="text-xl md:text-2xl font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Discutons de vos besoins et voyons comment nos agents IA peuvent transformer votre rentabilité
+                    opérationnelle dès le mois prochain.
+                </p>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <a href="#contact-form"
+                        class="group bg-deepblack text-white px-10 py-5 text-xl font-black rounded-full border-4 border-deepblack hover:bg-transparent hover:text-deepblack transition-all duration-300 flex items-center gap-4 shadow-neo">
+                        NOUS ÉCRIRE
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                            class="group-hover:translate-x-1 transition-transform">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <div
+                    class="mt-20 pt-12 border-t-2 border-deepblack/10 flex flex-col md:flex-row justify-between items-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-400">
+                    <div class="flex items-center gap-8">
+                    </div>
+                    <span>© 2026 ARAD - TOUS DROITS RÉSERVÉS</span>
+                    <a href="#hero" class="hover:text-deepblack transition-colors flex items-center gap-2">
+                        RETOUR EN HAUT
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script defer src="app.js"></script>
+</body>
+
+</html>

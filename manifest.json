@@ -1,0 +1,17 @@
+{
+  "name": "ARAD | Agence IA & Automatisation",
+  "short_name": "ARAD",
+  "description": "ARAD automatise vos processus métiers et crée des agents IA sur mesure.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "icons": [
+    {
+      "src": "new-logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
