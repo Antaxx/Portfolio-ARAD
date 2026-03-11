@@ -344,64 +344,66 @@ document.addEventListener('DOMContentLoaded', () => {
             const progress = (scrollLeft / scrollWidth) * 100;
             equipeProgress.style.width = `${Math.max(25, progress)}%`;
         });
-        // 11. AJAX Form Submission
-        const handleFormSubmit = async (formId, successId) => {
-            const form = document.getElementById(formId);
-            const successMessage = document.getElementById(successId);
-            if (!form) return;
+    }
 
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
+    // 11. AJAX Form Submission
+    const handleFormSubmit = async (formId, successId) => {
+        const form = document.getElementById(formId);
+        const successMessage = document.getElementById(successId);
+        if (!form) return;
 
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerHTML;
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-                // Visual feedback
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = 'ENVOI EN COURS...';
-                submitBtn.style.opacity = '0.7';
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (!submitBtn) return;
 
-                try {
-                    const formData = new FormData(form);
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+            // Visual feedback
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'ENVOI EN COURS...';
+            submitBtn.style.opacity = '0.7';
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Hide form elements
+                    const formElements = form.querySelectorAll('.group\\/input, .grid, .space-y-6, .space-y-8, .pt-4, .space-y-12');
+                    formElements.forEach(el => {
+                        if (!el.contains(successMessage)) el.style.display = 'none';
                     });
 
-                    if (response.ok) {
-                        // Hide form inputs but keep the form container for the success message
-                        const formElements = form.querySelectorAll('.group\\/input, .grid, .space-y-6, .space-y-8, .pt-4, .space-y-12');
-                        formElements.forEach(el => {
-                            if (!el.contains(successMessage)) el.style.display = 'none';
-                        });
+                    if (submitBtn) submitBtn.style.display = 'none';
 
-                        if (submitBtn) submitBtn.style.display = 'none';
-
-                        // Show success message with GSAP
-                        successMessage.classList.remove('hidden');
-                        if (typeof gsap !== 'undefined') {
-                            gsap.fromTo(successMessage,
-                                { opacity: 0, y: 30, scale: 0.9 },
-                                { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.7)" }
-                            );
-                        }
-                    } else {
-                        throw new Error('Form submission failed');
+                    // Show success message
+                    successMessage.classList.remove('hidden');
+                    if (typeof gsap !== 'undefined') {
+                        gsap.fromTo(successMessage,
+                            { opacity: 0, y: 30, scale: 0.9 },
+                            { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.7)" }
+                        );
                     }
-                } catch (error) {
-                    console.error('Submission error:', error);
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'ERREUR - RÉESSAYER';
-                    submitBtn.style.opacity = '1';
-                    alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter par téléphone.');
+                } else {
+                    throw new Error('Form submission failed');
                 }
-            });
-        };
+            } catch (error) {
+                console.error('Submission error:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'ERREUR - RÉESSAYER';
+                submitBtn.style.opacity = '1';
+                alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+            }
+        });
+    };
 
-        handleFormSubmit('contact-form-element', 'contact-success');
-        handleFormSubmit('referral-form-element', 'referral-success');
+    handleFormSubmit('contact-form-element', 'contact-success');
+    handleFormSubmit('referral-form-element', 'referral-success');
 
-    });
+});
