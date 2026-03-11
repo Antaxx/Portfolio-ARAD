@@ -51,30 +51,37 @@ document.addEventListener('DOMContentLoaded', () => {
             lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                smooth: true,
+                smoothWheel: true,
+                smoothTouch: false, // Recommended for better mobile experience
             });
 
-            function raf(time) {
-                if (lenis) lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-            requestAnimationFrame(raf);
+            console.log('Lenis Smooth Scroll Initialized');
 
             // Sync with GSAP ScrollTrigger
             if (typeof ScrollTrigger !== 'undefined') {
                 lenis.on('scroll', ScrollTrigger.update);
+                
                 gsap.ticker.add((time) => {
                     lenis.raf(time * 1000);
                 });
+                
                 gsap.ticker.lagSmoothing(0);
+                console.log('Lenis synchronized with GSAP ScrollTrigger');
+            } else {
+                // Fallback RAF if ScrollTrigger isn't present
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
             }
         } catch (e) {
             console.error('Lenis initialization failed:', e);
         }
-
     } else {
         console.warn('Lenis is not defined. Smooth scroll disabled.');
     }
+
 
     // Smooth Scroll for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
