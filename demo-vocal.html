@@ -107,8 +107,22 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
     <script>
+        // Smooth Scroll (Lenis)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis();
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            }
+        });
+
         const trigger = document.getElementById('voice-trigger');
+
         const status = document.getElementById('orb-status');
         const icon = document.getElementById('orb-icon');
         const dialogueBox = document.getElementById('dialogue-box');

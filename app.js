@@ -59,9 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestAnimationFrame(raf);
             }
             requestAnimationFrame(raf);
+
+            // Sync with GSAP ScrollTrigger
+            if (typeof ScrollTrigger !== 'undefined') {
+                lenis.on('scroll', ScrollTrigger.update);
+                gsap.ticker.add((time) => {
+                    lenis.raf(time * 1000);
+                });
+                gsap.ticker.lagSmoothing(0);
+            }
         } catch (e) {
             console.error('Lenis initialization failed:', e);
         }
+
     } else {
         console.warn('Lenis is not defined. Smooth scroll disabled.');
     }
