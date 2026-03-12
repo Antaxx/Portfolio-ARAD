@@ -490,52 +490,40 @@
                 <p class="text-center text-gray-400 mb-16 max-w-xl mx-auto">Nos autres agents disponibles pour votre
                     établissement.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- FAQ -->
-                    <div class="sol-card bg-[#1a1a1a] border-4 border-white/10 rounded-3xl p-8 flex flex-col gap-6">
-                        <div class="h-48 overflow-hidden rounded-2xl border-2 border-white/5">
-                            <img src="icone-agent-faq.png" alt="Agent FAQ IA" class="w-full h-full object-cover">
+                <div class="relative group">
+                    <div id="solutions-carousel" class="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-8 no-scrollbar scroll-smooth">
+                        <!-- FAQ -->
+                        <div class="sol-card min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.35rem)] snap-start bg-[#1a1a1a] border-4 border-white/10 rounded-3xl p-8 flex flex-col gap-6">
+                            <div class="h-48 overflow-hidden rounded-2xl border-2 border-white/5">
+                                <img src="icone-agent-faq.png" alt="Agent FAQ IA" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-black uppercase">Agent FAQ</h3>
+                            <p class="text-gray-400 text-sm flex-1">Support client 24/7. Répondez automatiquement et précisément à toutes les questions de vos clients.</p>
+                            <a href="solution-faq.html" class="block text-center bg-white text-deepblack px-6 py-3 rounded-full font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">Découvrir</a>
                         </div>
-                        <h3 class="text-2xl font-black uppercase">Agent FAQ</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed flex-1">Support client 24/7. Répondez
-                            automatiquement et précisément à toutes les questions de vos clients.</p>
-                        <a href="solution-faq.html"
-                            class="block text-center bg-white text-deepblack px-6 py-3 rounded-full font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">Découvrir</a>
-                    </div>
-                    <!-- Réservation -->
-                    <div class="sol-card bg-[#1a1a1a] border-4 border-white/10 rounded-3xl p-8 flex flex-col gap-6">
-                        <div class="h-48 overflow-hidden rounded-2xl border-2 border-white/5">
-                            <img src="icone-agent-réservations.png" alt="Agent Réservation"
-                                class="w-full h-full object-cover">
+                        <!-- Réservation -->
+                        <div class="sol-card min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.35rem)] snap-start bg-[#1a1a1a] border-4 border-white/10 rounded-3xl p-8 flex flex-col gap-6">
+                            <div class="h-48 overflow-hidden rounded-2xl border-2 border-white/5">
+                                <img src="icone-agent-réservations.png" alt="Agent Réservation" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-black uppercase">Réservation Hôtel</h3>
+                            <p class="text-gray-400 text-sm flex-1">Gérez automatiquement vos agendas et maximisez votre taux de remplissage 24h/24.</p>
+                            <a href="solution-reservation.html" class="block text-center bg-white text-deepblack px-6 py-3 rounded-full font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">Découvrir</a>
                         </div>
-                        <h3 class="text-2xl font-black uppercase">Réservation Hôtel</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed flex-1">Gérez automatiquement vos agendas et
-                            maximisez votre taux de remplissage 24h/24.</p>
-                        <a href="solution-reservation.html"
-                            class="block text-center bg-white text-deepblack px-6 py-3 rounded-full font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">Découvrir</a>
-                    </div>
-                    <!-- Avis -->
-                    <div class="sol-card bg-[#1a1a1a] border-4 border-white/10 rounded-3xl p-8 flex flex-col gap-6">
-                        <div class="h-48 overflow-hidden rounded-2xl border-2 border-white/5">
-                            <img src="icone-agent-avis.png" alt="Agent Avis" class="w-full h-full object-cover">
+                        <!-- Avis -->
+                        <div class="sol-card min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.35rem)] snap-start bg-[#1a1a1a] border-4 border-white/10 rounded-3xl p-8 flex flex-col gap-6">
+                            <div class="h-48 overflow-hidden rounded-2xl border-2 border-white/5">
+                                <img src="icone-agent-avis.png" alt="Agent Avis" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-black uppercase">Réponse aux Avis</h3>
+                            <p class="text-gray-400 text-sm flex-1">Répondez automatiquement et de manière personnalisée à vos avis Google. Optimisez votre e-réputation.</p>
+                            <a href="solution-avis.html" class="block text-center bg-white text-deepblack px-6 py-3 rounded-full font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">Découvrir</a>
                         </div>
-                        <h3 class="text-2xl font-black uppercase">Réponse aux Avis</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed flex-1">Répondez automatiquement et de manière
-                            personnalisée à vos avis Google. Optimisez votre e-réputation.</p>
-                        <a href="solution-avis.html"
-                            class="block text-center bg-white text-deepblack px-6 py-3 rounded-full font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">Découvrir</a>
                     </div>
-                    <!-- FAQ -->
-                    <div class="sol-card bg-[#1a1a1a] border-4 border-white/10 rounded-3xl p-8 flex flex-col gap-6">
-                        <div class="h-48 overflow-hidden rounded-2xl border-2 border-white/5">
-                            <img src="icone-agent-faq.png" alt="Agent FAQ" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-2xl font-black uppercase">Agent FAQ</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed flex-1">Support client 24/7. Répondez
-                            instantanément à toutes les questions de vos clients.</p>
-                        <a href="solution-faq.html"
-                            class="block text-center bg-white text-deepblack px-6 py-3 rounded-full font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform">Découvrir</a>
-                    </div>
+
+                    <!-- Carousel Navigation -->
+                    <button id="sol-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 w-12 h-12 bg-white text-deepblack rounded-full flex items-center justify-center font-black hover:scale-110 z-10 shadow-neo opacity-0 group-hover:opacity-100 transition-opacity">‹</button>
+                    <button id="sol-next" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-6 w-12 h-12 bg-white text-deepblack rounded-full flex items-center justify-center font-black hover:scale-110 z-10 shadow-neo opacity-0 group-hover:opacity-100 transition-opacity">›</button>
                 </div>
 
                 <!-- Library Button — SECTION 5 -->
@@ -548,40 +536,6 @@
             </div>
         </section>
 
-        <!-- Contact Form -->
-        <section id="contact-form" class="py-20 px-4 md:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-[clamp(2rem,5vw,4rem)] font-black uppercase mb-4 section-title">Passons à l'action</h2>
-                <p class="text-gray-400 mb-12 text-lg">Decrivez-nous votre projet. Nous vous répondons sous 24h.</p>
-                <form id="contact-form-element" action="https://formsubmit.co/eliott.perier@gmail.com" method="POST"
-                    class="flex flex-col gap-5 text-left">
-                    <input type="hidden" name="_subject" value="Nouveau contact ARAD - Solution Vocal">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="page_source" value="solution-vocal">
-                    <div class="group/input">
-                        <input type="text" name="name" placeholder="Votre nom" required
-                            class="w-full bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-bold">
-                    </div>
-                    <div class="group/input">
-                        <input type="email" name="email" placeholder="Votre email" required
-                            class="w-full bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-bold">
-                    </div>
-                    <div class="group/input">
-                        <textarea name="message" placeholder="Décrivez votre projet..." rows="5" required
-                            class="w-full bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-bold resize-none"></textarea>
-                    </div>
-                    <button type="submit"
-                        class="w-full bg-white text-deepblack py-5 font-black uppercase tracking-widest rounded-2xl hover:bg-white/90 transition-colors text-sm">
-                        Envoyer →
-                    </button>
-                    <div id="contact-success" class="hidden text-center py-8">
-                        <p class="text-2xl font-black uppercase text-white">Message envoyé ✓</p>
-                        <p class="text-gray-400 mt-2">Nous vous répondons sous 24h ouvrées.</p>
-                    </div>
-                </form>
-            </div>
-        </section>
 
     </main>
 
@@ -601,44 +555,33 @@
     <script defer src="app.js"></script>
     <script>
         // Carousel logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const thumbs = document.querySelectorAll('.carousel-thumb');
-            const videoPlaceholder = document.getElementById('video-placeholder');
-            const carouselImg = document.getElementById('carousel-img');
-            let current = 0;
+            // Media Carousel Logic
+            const thumbs = document.querySelectorAll('.carousel-thumb'), vp = document.getElementById('video-placeholder'), ci = document.getElementById('carousel-img'); let cur = 0;
+            function act(i) { thumbs.forEach(t => { t.style.opacity = '0.4'; t.style.borderColor = 'transparent' }); const t = thumbs[i]; if (!t) return; t.style.opacity = '1'; t.style.borderColor = '#fff'; cur = i; if (t.dataset.type === 'video') { vp.style.display = 'flex'; ci.classList.add('hidden') } else if (t.dataset.type === 'image') { vp.style.display = 'none'; ci.src = t.dataset.src; ci.classList.remove('hidden') } else { vp.style.display = 'flex'; ci.classList.add('hidden') } }
+            thumbs.forEach((t, i) => t.addEventListener('click', () => act(i)));
+            document.getElementById('thumb-prev').addEventListener('click', () => act((cur - 1 + thumbs.length) % thumbs.length));
+            document.getElementById('thumb-next').addEventListener('click', () => act((cur + 1) % thumbs.length));
 
-            function activateThumb(index) {
-                thumbs.forEach(t => t.classList.remove('active'));
-                const thumb = thumbs[index];
-                if (!thumb) return;
-                thumb.classList.add('active');
-                current = index;
-
-                const type = thumb.dataset.type;
-                if (type === 'video') {
-                    videoPlaceholder.style.display = 'flex';
-                    carouselImg.classList.add('hidden');
-                } else if (type === 'image') {
-                    videoPlaceholder.style.display = 'none';
-                    carouselImg.src = thumb.dataset.src;
-                    carouselImg.classList.remove('hidden');
-                } else {
-                    videoPlaceholder.style.display = 'flex';
-                    carouselImg.classList.add('hidden');
-                }
+            // Solutions Carousel Logic
+            const solCarousel = document.getElementById('solutions-carousel');
+            const solPrev = document.getElementById('sol-prev');
+            const solNext = document.getElementById('sol-next');
+            if (solCarousel && solPrev && solNext) {
+                solNext.onclick = () => {
+                    const card = solCarousel.querySelector('.sol-card');
+                    if (card) {
+                        const cardWidth = card.offsetWidth + 32;
+                        solCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                    }
+                };
+                solPrev.onclick = () => {
+                    const card = solCarousel.querySelector('.sol-card');
+                    if (card) {
+                        const cardWidth = card.offsetWidth + 32;
+                        solCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                    }
+                };
             }
-
-            thumbs.forEach((thumb, i) => {
-                thumb.addEventListener('click', () => activateThumb(i));
-            });
-
-            document.getElementById('thumb-prev').addEventListener('click', () => {
-                activateThumb((current - 1 + thumbs.length) % thumbs.length);
-            });
-            document.getElementById('thumb-next').addEventListener('click', () => {
-                activateThumb((current + 1) % thumbs.length);
-            });
-        });
     </script>
 </body>
 
